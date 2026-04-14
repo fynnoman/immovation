@@ -9,7 +9,7 @@ import CountUp from "@/components/CountUp";
 import {
   MapPin, Shield, Key, Clock, Home, Maximize, DoorOpen,
   Search, FileText, Handshake, Star, Building2, Users,
-  TrendingUp, Award,
+  TrendingUp, Award, ChevronRight,
 } from "lucide-react";
 import type { Property } from "@/data/hotels";
 
@@ -46,152 +46,151 @@ export default function AnimatedHome({ featuredProperties, popularCities }: Anim
 
       {/* Rental categories */}
       <section className="max-w-7xl mx-auto px-4 mb-16">
-        <AnimateOnScroll animation="fade-up">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            Mietarten entdecken
-          </h2>
-        </AnimateOnScroll>
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          Mietarten entdecken
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <StaggerChildren animation="fade-up" staggerDelay={120}>
-            {[
-              {
-                title: "Festmiete",
-                desc: "Langfristige Mietwohnungen mit unbefristetem oder langfristigem Vertrag. Ideal für alle, die dauerhaft ein Zuhause suchen.",
-                href: "/search?type=festmiete",
-                color: "bg-blue-50 border-blue-200",
-                iconColor: "text-blue-600 bg-blue-100",
-              },
-              {
-                title: "Monteurswohnungen",
-                desc: "Voll möblierte Wohnungen für Handwerker und Projektteams. Sofort bezugsfertig, inklusive Reinigung und Bettwäsche.",
-                href: "/search?type=monteurswohnung",
-                color: "bg-amber-50 border-amber-200",
-                iconColor: "text-amber-600 bg-amber-100",
-              },
-              {
-                title: "Kurzmiete",
-                desc: "Befristete Mietverträge ab 1 Monat. Perfekt für Berufspendler, Studenten oder Übergangslösungen.",
-                href: "/search?type=kurzmiete",
-                color: "bg-purple-50 border-purple-200",
-                iconColor: "text-purple-600 bg-purple-100",
-              },
-            ].map((cat) => (
-              <Link
-                key={cat.title}
-                href={cat.href}
-                className={`group border rounded-lg p-6 hover-lift transition ${cat.color}`}
-              >
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 ${cat.iconColor} group-hover:scale-110 transition-transform duration-300`}>
-                  <Home size={24} />
-                </div>
-                <h3 className="font-bold text-gray-900 text-lg mb-2 animated-underline transition">
-                  {cat.title}
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{cat.desc}</p>
-              </Link>
-            ))}
-          </StaggerChildren>
+          {[
+            {
+              title: "Festmiete",
+              desc: "Langfristige Mietwohnungen mit unbefristetem oder langfristigem Vertrag. Ideal für alle, die dauerhaft ein Zuhause suchen.",
+              href: "/search?type=festmiete",
+              icon: "🏠",
+              gradient: "from-blue-500 to-blue-600",
+              bg: "bg-blue-50",
+              iconBg: "bg-blue-100",
+              iconText: "text-blue-600",
+            },
+            {
+              title: "Monteurswohnungen",
+              desc: "Voll möblierte Wohnungen für Handwerker und Projektteams. Sofort bezugsfertig, inklusive Reinigung und Bettwäsche.",
+              href: "/search?type=monteurswohnung",
+              icon: "🔧",
+              gradient: "from-amber-500 to-amber-600",
+              bg: "bg-amber-50",
+              iconBg: "bg-amber-100",
+              iconText: "text-amber-600",
+            },
+            {
+              title: "Kurzmiete",
+              desc: "Befristete Mietverträge ab 1 Monat. Perfekt für Berufspendler, Studenten oder Übergangslösungen.",
+              href: "/search?type=kurzmiete",
+              icon: "⏱️",
+              gradient: "from-purple-500 to-purple-600",
+              bg: "bg-purple-50",
+              iconBg: "bg-purple-100",
+              iconText: "text-purple-600",
+            },
+          ].map((cat) => (
+            <Link
+              key={cat.title}
+              href={cat.href}
+              className={`group relative rounded-xl border border-gray-200 ${cat.bg} p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-transparent overflow-hidden`}
+            >
+              <div className={`absolute top-0 left-0 w-1 h-full bg-gradient-to-b ${cat.gradient} rounded-l-xl transition-all duration-300 group-hover:w-1.5`} />
+              <div className={`w-12 h-12 ${cat.iconBg} rounded-xl flex items-center justify-center mb-4 text-2xl transition-transform duration-300 group-hover:scale-110`}>
+                {cat.icon}
+              </div>
+              <h3 className="font-bold text-gray-900 text-lg mb-2">
+                {cat.title}
+              </h3>
+              <p className="text-sm text-gray-600 leading-relaxed">{cat.desc}</p>
+              <span className={`inline-flex items-center gap-1 mt-4 text-sm font-medium ${cat.iconText} transition-all duration-300 group-hover:gap-2`}>
+                Entdecken <ChevronRight size={14} />
+              </span>
+            </Link>
+          ))}
         </div>
       </section>
 
       {/* Popular cities */}
       <section className="max-w-7xl mx-auto px-4 mb-16">
-        <AnimateOnScroll animation="fade-up">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            Beliebte Städte
-          </h2>
-        </AnimateOnScroll>
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          Beliebte Städte
+        </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          <StaggerChildren animation="scale-up" staggerDelay={80}>
-            {popularCities.map((dest) => (
-              <Link
-                key={dest.city}
-                href={`/search?destination=${encodeURIComponent(dest.city)}`}
-                className="group bg-white border border-gray-200 rounded-lg p-4 hover-lift hover:border-[#FDC700] transition"
-              >
-                <div className="w-10 h-10 bg-[#FDC700]/10 rounded-full flex items-center justify-center mb-2 group-hover:animate-float">
-                  <MapPin size={20} className="text-[#FDC700]" />
-                </div>
-                <h3 className="font-bold text-gray-900 animated-underline transition">
-                  {dest.city}
-                </h3>
-                <p className="text-xs text-gray-500">
-                  {dest.properties} Wohnungen
-                </p>
-              </Link>
-            ))}
-          </StaggerChildren>
+          {popularCities.map((dest) => (
+            <Link
+              key={dest.city}
+              href={`/search?destination=${encodeURIComponent(dest.city)}`}
+              className="group bg-white border border-gray-200 rounded-xl p-5 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-[#FDC700]"
+            >
+              <div className="w-10 h-10 bg-[#FDC700]/10 rounded-lg flex items-center justify-center mb-3 transition-all duration-300 group-hover:bg-[#FDC700] group-hover:scale-110">
+                <MapPin size={18} className="text-[#FDC700] transition-colors duration-300 group-hover:text-white" />
+              </div>
+              <h3 className="font-bold text-gray-900 text-sm">
+                {dest.city}
+              </h3>
+              <p className="text-xs text-gray-500 mt-0.5">
+                {dest.properties} Wohnungen
+              </p>
+            </Link>
+          ))}
         </div>
       </section>
 
       {/* Featured properties */}
       <section className="max-w-7xl mx-auto px-4 mb-16">
-        <AnimateOnScroll animation="fade-up">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            Top-Wohnungen
-          </h2>
-          <p className="text-gray-500 mb-6">
-            Von Mietern am besten bewertet
-          </p>
-        </AnimateOnScroll>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+          Top-Wohnungen
+        </h2>
+        <p className="text-gray-500 mb-6">
+          Von Mietern am besten bewertet
+        </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <StaggerChildren animation="fade-up" staggerDelay={100}>
-            {featuredProperties.map((property) => (
-              <Link
-                key={property.id}
-                href={`/hotel/${property.id}`}
-                className="group bg-white border border-gray-200 rounded-lg overflow-hidden hover-lift transition"
-              >
-                <div className="h-40 relative overflow-hidden">
-                  {property.images.length > 0 ? (
-                    <Image
-                      src={property.images[0]}
-                      alt={property.name}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    />
-                  ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                      <Home size={28} className="text-gray-400" />
-                    </div>
-                  )}
-                </div>
-                <div className="p-4">
-                  <h3 className="font-bold text-gray-900 animated-underline transition mb-1 text-sm">
-                    {property.name}
-                  </h3>
-                  <p className="text-xs text-gray-500 mb-2">
-                    {property.city}, {property.country}
-                  </p>
-                  <div className="flex items-center gap-3 text-xs text-gray-500 mb-3">
-                    <span className="flex items-center gap-1">
-                      <DoorOpen size={12} /> {property.rooms} Zi.
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Maximize size={12} /> {property.size} m²
-                    </span>
+          {featuredProperties.map((property) => (
+            <Link
+              key={property.id}
+              href={`/hotel/${property.id}`}
+              className="group bg-white border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+            >
+              <div className="h-44 relative overflow-hidden">
+                {property.images.length > 0 ? (
+                  <Image
+                    src={property.images[0]}
+                    alt={property.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                    <Home size={28} className="text-gray-400" />
                   </div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1">
-                      <span className="bg-[#FDC700] text-gray-900 text-xs font-bold px-1.5 py-0.5 rounded">
-                        {property.rating}
-                      </span>
-                      <span className="text-xs text-gray-500">
-                        {property.reviewScore}
-                      </span>
-                    </div>
-                    <div className="text-right">
-                      <p className="font-bold text-gray-900">
-                        €{property.pricePerMonth.toLocaleString("de-DE")}
-                      </p>
-                      <p className="text-xs text-gray-500">/ Monat</p>
-                    </div>
+                )}
+                <div className="absolute top-3 left-3 bg-[#FDC700] text-gray-900 text-xs font-bold px-2 py-1 rounded-lg">
+                  {property.rating}
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="font-bold text-gray-900 mb-1 text-sm line-clamp-1">
+                  {property.name}
+                </h3>
+                <p className="text-xs text-gray-500 mb-3 flex items-center gap-1">
+                  <MapPin size={12} /> {property.city}
+                </p>
+                <div className="flex items-center gap-3 text-xs text-gray-500 mb-3">
+                  <span className="flex items-center gap-1">
+                    <DoorOpen size={12} /> {property.rooms} Zi.
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Maximize size={12} /> {property.size} m²
+                  </span>
+                </div>
+                <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                  <span className="text-xs text-gray-500">
+                    {property.reviewScore}
+                  </span>
+                  <div className="text-right">
+                    <p className="font-bold text-gray-900">
+                      €{property.pricePerMonth.toLocaleString("de-DE")}
+                    </p>
+                    <p className="text-xs text-gray-500">/ Monat</p>
                   </div>
                 </div>
-              </Link>
-            ))}
-          </StaggerChildren>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
