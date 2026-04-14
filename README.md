@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Immovation – Buchungsplattform
 
-## Getting Started
+Eine moderne Buchungsplattform ähnlich wie Booking.com, gebaut mit Next.js, TypeScript und Tailwind CSS.
 
-First, run the development server:
+## 🚀 Features
+
+- **Startseite** mit Suchleiste, beliebten Reisezielen und Top-Unterkünften
+- **Suchseite** mit Filtern (Preis, Sterne, Bewertung, Unterkunftsart, Ausstattung) und Sortierung
+- **Hoteldetailseite** mit Bewertungen, Ausstattung und Buchungswidget
+- **Buchungsflow** mit Preisübersicht und Bestätigung
+- **Responsive Design** – optimiert für Desktop, Tablet und Mobilgeräte
+
+## 🎨 Design
+
+- Weißes Theme mit Akzentfarbe **#00B8D9**
+- Moderne, klare Oberfläche
+- Deutsche Benutzeroberfläche
+
+## 🛠️ Tech Stack
+
+- [Next.js 16](https://nextjs.org/) mit App Router und Turbopack
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS v4](https://tailwindcss.com/)
+- [Lucide React](https://lucide.dev/) (Icons)
+- [date-fns](https://date-fns.org/) (Datumsformatierung)
+
+## 📁 Projektstruktur
+
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root Layout (Header + Footer)
+│   ├── page.tsx             # Startseite
+│   ├── globals.css          # Globale Styles
+│   ├── search/
+│   │   └── page.tsx         # Suchseite mit Filtern
+│   └── hotel/
+│       └── [id]/
+│           ├── page.tsx     # Hoteldetailseite
+│           └── BookingWidget.tsx  # Buchungswidget
+├── components/
+│   ├── Header.tsx           # Navigation & Header
+│   ├── Footer.tsx           # Footer
+│   ├── SearchBar.tsx        # Suchleiste
+│   ├── HotelCard.tsx        # Hotelkarte für Suchergebnisse
+│   └── FilterSidebar.tsx    # Filterseitenleiste
+└── data/
+    └── hotels.ts            # Mock-Daten für Hotels
+```
+
+## 🏃 Projekt starten
+
+### Entwicklungsserver starten
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Öffnen Sie [http://localhost:3000](http://localhost:3000) in Ihrem Browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Produktions-Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+### Linting
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run lint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 Hinweis
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Dies ist eine Demo-Website mit Platzhalter-Daten. Es werden keine echten Buchungen durchgeführt oder Zahlungen verarbeitet. Die Hotel-Bilder sind Platzhalter und sollten durch echte Bilder ersetzt werden.
