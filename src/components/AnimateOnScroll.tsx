@@ -20,13 +20,31 @@ export default function AnimateOnScroll({
   duration = 600,
   threshold = 0.15,
   once = true,
-}: AnimateOnScrollProps) {
+  style: externalStyle,
+}: AnimateOnScrollProps & { style?: React.CSSProperties }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [hasMounted, setHasMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
+
+    const rect = element.getBoundingClientRect();
+    const inViewport = rect.top < window.innerHeight * 1.1 && rect.bottom > 0;
+
+    if (inViewport) {
+      // Already in viewport — animate in immediately (with delay)
+      setHasMounted(true);
+      // Use a rAF so the hidden state renders first, then transition kicks in
+      requestAnimationFrame(() => {
+        setIsVisible(true);
+      });
+      return;
+    }
+
+    // Not in viewport — set to hidden, then use observer
+    setHasMounted(true);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -66,13 +84,22 @@ export default function AnimateOnScroll({
     filter: "blur(0px)",
   };
 
+  // Before JS mounts: show content normally (no animation)
+  // After mount: apply animation styles
+  const animationStyle: React.CSSProperties = !hasMounted
+    ? { opacity: 1 }
+    : {
+        ...baseStyles,
+        ...(isVisible ? visibleStyles : hiddenStyles[animation]),
+      };
+
   return (
     <div
       ref={ref}
       className={className}
       style={{
-        ...baseStyles,
-        ...(isVisible ? visibleStyles : hiddenStyles[animation]),
+        ...animationStyle,
+        ...externalStyle,
       }}
     >
       {children}
@@ -100,7 +127,7 @@ export function StaggerChildren({
       {children.map((child, i) => (
         <AnimateOnScroll
           key={i}
-          className={className}
+          className={`${className} h-full [&>a]:h-full [&>div]:h-full`}
           animation={animation}
           delay={baseDelay + i * staggerDelay}
           duration={duration}
