@@ -5,8 +5,8 @@ export default function NotFound() {
   return (
     <div className="min-h-[70vh] flex items-center justify-center px-4">
       <div className="text-center max-w-lg">
-        <div className="w-24 h-24 bg-[#B8860B]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-          <Home size={40} className="text-[#B8860B]" />
+        <div className="w-24 h-24 bg-[#B5A189]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+          <Home size={40} className="text-[#B5A189]" />
         </div>
         <h1 className="text-6xl font-bold text-gray-900 mb-2">404</h1>
         <h2 className="text-2xl font-bold text-gray-900 mb-3">
@@ -19,7 +19,7 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 bg-[#B8860B] hover:bg-[#9A7209] text-gray-900 px-6 py-3 rounded-md font-semibold text-sm transition active:scale-95"
+            className="inline-flex items-center justify-center gap-2 bg-[#B5A189] hover:bg-[#9B8B73] text-gray-900 px-6 py-3 rounded-md font-semibold text-sm transition active:scale-95"
           >
             <ArrowLeft size={18} />
             Zur Startseite

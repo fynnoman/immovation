@@ -11,7 +11,7 @@ export default function Logo({ className = "" }: { className?: string }) {
         y1="0.0289736"
         x2="10.0543"
         y2="18.7746"
-        stroke="#B8860B"
+        stroke="#B5A189"
         strokeWidth="20"
       />
       <path
@@ -35,7 +35,7 @@ export default function Logo({ className = "" }: { className?: string }) {
           y2="72.558"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#B8860B" />
+          <stop stopColor="#B5A189" />
           <stop offset="1" stopColor="#9a8400" />
         </linearGradient>
         <linearGradient
@@ -46,7 +46,7 @@ export default function Logo({ className = "" }: { className?: string }) {
           y2="95.2957"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#B8860B" />
+          <stop stopColor="#B5A189" />
           <stop offset="1" stopColor="#9a8400" />
         </linearGradient>
       </defs>

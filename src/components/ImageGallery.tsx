@@ -148,7 +148,7 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
                 key={i}
                 onClick={() => setCurrentIndex(i)}
                 className={`relative w-16 h-12 rounded-md overflow-hidden shrink-0 border-2 transition ${
-                  i === currentIndex ? "border-[#B8860B]" : "border-transparent opacity-50 hover:opacity-80"
+                  i === currentIndex ? "border-[#B5A189]" : "border-transparent opacity-50 hover:opacity-80"
                 }`}
               >
                 <Image

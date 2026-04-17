@@ -62,7 +62,7 @@ export default function PropertyMap({
       return L.divIcon({
         className: "custom-marker",
         html: `<div style="
-          background: ${isSelected ? "#111827" : "#B8860B"};
+          background: ${isSelected ? "#111827" : "#B5A189"};
           color: ${isSelected ? "white" : "#111827"};
           padding: 4px 10px;
           border-radius: 20px;
@@ -70,7 +70,7 @@ export default function PropertyMap({
           font-weight: 700;
           white-space: nowrap;
           box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-          border: 2px solid ${isSelected ? "#B8860B" : "white"};
+          border: 2px solid ${isSelected ? "#B5A189" : "white"};
           transform: translate(-50%, -100%);
           cursor: pointer;
         ">€${price.toLocaleString("de-DE")}</div>`,
@@ -91,9 +91,9 @@ export default function PropertyMap({
           <div style="font-size: 12px; color: #6b7280; margin-bottom: 6px;">${p.address}</div>
           <div style="display: flex; align-items: center; justify-content: space-between;">
             <span style="font-weight: 700; font-size: 16px; color: #111827;">€${p.pricePerMonth.toLocaleString("de-DE")}/Mo</span>
-            <span style="background: #B8860B; color: #111827; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 12px;">${p.rating}</span>
+            <span style="background: #B5A189; color: #111827; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 12px;">${p.rating}</span>
           </div>
-          <a href="/hotel/${p.id}" style="display: block; text-align: center; margin-top: 8px; background: #B8860B; color: #111827; padding: 6px; border-radius: 6px; font-size: 12px; font-weight: 600; text-decoration: none;">Details ansehen</a>
+          <a href="/hotel/${p.id}" style="display: block; text-align: center; margin-top: 8px; background: #B5A189; color: #111827; padding: 6px; border-radius: 6px; font-size: 12px; font-weight: 600; text-decoration: none;">Details ansehen</a>
         </div>
       `);
 

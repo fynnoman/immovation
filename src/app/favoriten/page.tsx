@@ -47,7 +47,7 @@ export default function FavoritenPage() {
             </p>
             <Link
               href="/search"
-              className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#9A7209] text-gray-900 px-6 py-3 rounded-md font-semibold text-sm transition"
+              className="inline-flex items-center gap-2 bg-[#B5A189] hover:bg-[#9B8B73] text-gray-900 px-6 py-3 rounded-md font-semibold text-sm transition"
             >
               <Search size={18} />
               Wohnungen entdecken

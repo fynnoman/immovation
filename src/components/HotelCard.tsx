@@ -42,7 +42,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
 
   return (
     <Link href={`/hotel/${property.id}`} className="block group">
-      <div className="bg-white border border-gray-200 rounded-lg overflow-hidden hover-lift transition-all duration-300 hover:border-[#B8860B]/30">
+      <div className="bg-white border border-gray-200 rounded-lg overflow-hidden hover-lift transition-all duration-300 hover:border-[#B5A189]/30">
         <div className="flex flex-col sm:flex-row">
           {/* Image */}
           <div className="sm:w-64 h-48 sm:h-auto relative shrink-0 overflow-hidden">
@@ -89,7 +89,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
           <div className="flex-1 p-4 flex flex-col">
             <div className="flex items-start justify-between gap-4">
               <div className="flex-1">
-                <h3 className="text-base font-bold text-gray-900 group-hover:underline decoration-[#B8860B] underline-offset-2 mb-1">
+                <h3 className="text-base font-bold text-gray-900 group-hover:underline decoration-[#B5A189] underline-offset-2 mb-1">
                   {property.name}
                 </h3>
 
@@ -135,7 +135,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
                       {property.reviewCount} Bewertungen
                     </p>
                   </div>
-                  <div className="bg-[#B8860B] text-gray-900 rounded-tl-lg rounded-tr-lg rounded-br-lg w-10 h-10 flex items-center justify-center text-sm font-bold">
+                  <div className="bg-[#B5A189] text-gray-900 rounded-tl-lg rounded-tr-lg rounded-br-lg w-10 h-10 flex items-center justify-center text-sm font-bold">
                     {property.rating}
                   </div>
                 </div>

@@ -120,7 +120,7 @@ export default function FilterSidebar({
                 onChange={() =>
                   updateFilter({ priceRange: [range.min, range.max] })
                 }
-                className="accent-[#B8860B]"
+                className="accent-[#B5A189]"
               />
               <span className="text-sm text-gray-700">{range.label}</span>
             </label>
@@ -133,7 +133,7 @@ export default function FilterSidebar({
                 filters.priceRange[0] === 0 && filters.priceRange[1] === 5000
               }
               onChange={() => updateFilter({ priceRange: [0, 5000] })}
-              className="accent-[#B8860B]"
+              className="accent-[#B5A189]"
             />
             <span className="text-sm text-gray-700">Alle Preise</span>
           </label>
@@ -149,7 +149,7 @@ export default function FilterSidebar({
               type="date"
               value={filters.dateFrom}
               onChange={(e) => updateFilter({ dateFrom: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm outline-none focus:border-[#B8860B] transition"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm outline-none focus:border-[#B5A189] transition"
             />
           </div>
           <div>
@@ -159,13 +159,13 @@ export default function FilterSidebar({
               value={filters.dateTo}
               min={filters.dateFrom || undefined}
               onChange={(e) => updateFilter({ dateTo: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm outline-none focus:border-[#B8860B] transition"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm outline-none focus:border-[#B5A189] transition"
             />
           </div>
           {(filters.dateFrom || filters.dateTo) && (
             <button
               onClick={() => updateFilter({ dateFrom: "", dateTo: "" })}
-              className="text-xs text-[#B8860B] hover:underline"
+              className="text-xs text-[#B5A189] hover:underline"
             >
               Zeitraum zurücksetzen
             </button>
@@ -185,7 +185,7 @@ export default function FilterSidebar({
                 type="checkbox"
                 checked={filters.rooms.includes(room)}
                 onChange={() => toggleRoom(room)}
-                className="accent-[#B8860B] rounded"
+                className="accent-[#B5A189] rounded"
               />
               <span className="text-sm text-gray-700">
                 {room} {room === 1 ? "Zimmer" : "Zimmer"}
@@ -211,7 +211,7 @@ export default function FilterSidebar({
                 type="checkbox"
                 checked={filters.rentalTypes.includes(type.value)}
                 onChange={() => toggleRentalType(type.value)}
-                className="accent-[#B8860B] rounded"
+                className="accent-[#B5A189] rounded"
               />
               <span className="text-sm text-gray-700">{type.label}</span>
             </label>
@@ -238,7 +238,7 @@ export default function FilterSidebar({
                 name="size"
                 checked={filters.minSize === s.value}
                 onChange={() => updateFilter({ minSize: s.value })}
-                className="accent-[#B8860B]"
+                className="accent-[#B5A189]"
               />
               <span className="text-sm text-gray-700">{s.label}</span>
             </label>
@@ -258,7 +258,7 @@ export default function FilterSidebar({
                   furnished: filters.furnished === true ? null : true,
                 })
               }
-              className="accent-[#B8860B] rounded"
+              className="accent-[#B5A189] rounded"
             />
             <span className="text-sm text-gray-700">Möbliert</span>
           </label>
@@ -269,7 +269,7 @@ export default function FilterSidebar({
               onChange={() =>
                 updateFilter({ available: !filters.available })
               }
-              className="accent-[#B8860B] rounded"
+              className="accent-[#B5A189] rounded"
             />
             <span className="text-sm text-gray-700">Nur verfügbare</span>
           </label>
@@ -293,7 +293,7 @@ export default function FilterSidebar({
                 name="rating"
                 checked={filters.minRating === r.value}
                 onChange={() => updateFilter({ minRating: r.value })}
-                className="accent-[#B8860B]"
+                className="accent-[#B5A189]"
               />
               <span className="text-sm text-gray-700">{r.label}</span>
             </label>
@@ -304,7 +304,7 @@ export default function FilterSidebar({
               name="rating"
               checked={filters.minRating === 0}
               onChange={() => updateFilter({ minRating: 0 })}
-              className="accent-[#B8860B]"
+              className="accent-[#B5A189]"
             />
             <span className="text-sm text-gray-700">Alle</span>
           </label>

@@ -129,7 +129,7 @@ function SearchContent() {
       </div>
 
       {/* Search bar */}
-      <div className="bg-[#B8860B] py-4">
+      <div className="bg-[#B5A189] py-4">
         <div className="max-w-7xl mx-auto px-4">
           <SearchBar
             variant="compact"
@@ -156,7 +156,7 @@ function SearchContent() {
                 onClick={() => setViewMode("list")}
                 className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium transition ${
                   viewMode === "list"
-                    ? "bg-[#B8860B] text-gray-900"
+                    ? "bg-[#B5A189] text-gray-900"
                     : "bg-white text-gray-600 hover:bg-gray-50"
                 }`}
               >
@@ -166,7 +166,7 @@ function SearchContent() {
                 onClick={() => setViewMode("map")}
                 className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium transition ${
                   viewMode === "map"
-                    ? "bg-[#B8860B] text-gray-900"
+                    ? "bg-[#B5A189] text-gray-900"
                     : "bg-white text-gray-600 hover:bg-gray-50"
                 }`}
               >
@@ -176,7 +176,7 @@ function SearchContent() {
 
             {/* Mobile filter toggle */}
             <button
-              className="lg:hidden flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md text-sm hover:border-[#B8860B] transition"
+              className="lg:hidden flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md text-sm hover:border-[#B5A189] transition"
               onClick={() => setShowMobileFilters(true)}
             >
               <SlidersHorizontal size={16} />
@@ -189,7 +189,7 @@ function SearchContent() {
               onChange={(e) =>
                 setFilters({ ...filters, sortBy: e.target.value })
               }
-              className="px-4 py-2 border border-gray-300 rounded-md text-sm bg-white outline-none hover:border-[#B8860B] focus:border-[#B8860B] transition"
+              className="px-4 py-2 border border-gray-300 rounded-md text-sm bg-white outline-none hover:border-[#B5A189] focus:border-[#B5A189] transition"
             >
               <option value="recommended">Empfohlen</option>
               <option value="price-low">Miete (aufsteigend)</option>
@@ -262,7 +262,7 @@ function SearchContent() {
                 </p>
                 <button
                   onClick={() => setFilters(defaultFilters)}
-                  className="px-6 py-2 bg-[#B8860B] text-gray-900 rounded-md text-sm font-medium hover:bg-[#9A7209] transition"
+                  className="px-6 py-2 bg-[#B5A189] text-gray-900 rounded-md text-sm font-medium hover:bg-[#9B8B73] transition"
                 >
                   Filter zurücksetzen
                 </button>
@@ -289,9 +289,9 @@ export default function SearchPage() {
     <Suspense
       fallback={
         <div className="bg-gray-50 min-h-screen">
-          <div className="bg-[#B8860B] py-4">
+          <div className="bg-[#B5A189] py-4">
             <div className="max-w-7xl mx-auto px-4">
-              <div className="h-14 bg-[#9A7209]/30 rounded-lg animate-pulse" />
+              <div className="h-14 bg-[#9B8B73]/30 rounded-lg animate-pulse" />
             </div>
           </div>
           <div className="max-w-7xl mx-auto px-4 py-6">

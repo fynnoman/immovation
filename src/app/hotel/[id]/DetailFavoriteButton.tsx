@@ -17,7 +17,7 @@ export default function DetailFavoriteButton({ propertyId }: DetailFavoriteButto
       className={`p-2 border rounded-md transition ${
         favorited
           ? "bg-red-500 border-red-500 text-white"
-          : "border-gray-300 hover:border-[#B8860B] text-gray-500"
+          : "border-gray-300 hover:border-[#B5A189] text-gray-500"
       }`}
     >
       <Heart size={20} className={favorited ? "fill-white" : ""} />

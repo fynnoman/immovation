@@ -47,8 +47,8 @@ This is a Next.js 16 booking platform similar to booking.com, built with:
 ## Design System
 
 - **Background**: White (#ffffff)
-- **Accent Color**: #B8860B (brown-gold)
-- **Accent Dark**: #9A7209 (hover states)
+- **Accent Color**: #B5A189 (brown-gold)
+- **Accent Dark**: #9B8B73 (hover states)
 - **Text**: Dark gray (#1a1a1a)
 - **Language**: German (de)
 
