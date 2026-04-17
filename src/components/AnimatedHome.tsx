@@ -278,7 +278,7 @@ export default function AnimatedHome({ featuredProperties, popularCities }: Anim
         <div className="max-w-7xl mx-auto px-4">
           <AnimateOnScroll animation="fade-up">
             <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-              Warum Immovation?
+              Warum Pavan-rent?
             </h2>
           </AnimateOnScroll>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -335,14 +335,14 @@ export default function AnimatedHome({ featuredProperties, popularCities }: Anim
                 name: "Laura Schneider",
                 city: "Berlin",
                 type: "Festmiete",
-                text: "Innerhalb von einer Woche hatte ich drei Besichtigungstermine und kurz darauf meinen Mietvertrag. Immovation hat den Umzug nach Berlin so viel einfacher gemacht!",
+                text: "Innerhalb von einer Woche hatte ich drei Besichtigungstermine und kurz darauf meinen Mietvertrag. Pavan-rent hat den Umzug nach Berlin so viel einfacher gemacht!",
                 rating: 5,
               },
               {
                 name: "Markus Weber",
                 city: "München",
                 type: "Monteurswohnung",
-                text: "Als Projektleiter brauche ich regelmäßig möblierte Wohnungen in verschiedenen Städten. Immovation spart mir jedes Mal Stunden an Suchzeit. Top Service!",
+                text: "Als Projektleiter brauche ich regelmäßig möblierte Wohnungen in verschiedenen Städten. Pavan-rent spart mir jedes Mal Stunden an Suchzeit. Top Service!",
                 rating: 5,
               },
               {
@@ -429,6 +429,80 @@ export default function AnimatedHome({ featuredProperties, popularCities }: Anim
                   ))}
                 </div>
               </div>
+            </div>
+          </AnimateOnScroll>
+        </div>
+      </section>
+
+      {/* Unternehmensvision */}
+      <section className="py-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          <AnimateOnScroll animation="fade-up">
+            <div className="max-w-3xl mx-auto text-center mb-12">
+              <span className="inline-block text-xs font-semibold text-[#B5A189] bg-[#B5A189]/10 px-3 py-1 rounded-full mb-4">
+                Unsere Vision
+              </span>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                Ein zweites Zuhause für Monteure
+              </h2>
+              <p className="text-gray-500 leading-relaxed">
+                Die Vision von Pavan-rent ist eng mit der persönlichen Geschichte unseres Gründers verbunden.
+              </p>
+            </div>
+          </AnimateOnScroll>
+
+          <div className="grid md:grid-cols-2 gap-10 items-start">
+            <AnimateOnScroll animation="fade-right">
+              <div className="space-y-6">
+                <p className="text-gray-600 leading-relaxed">
+                  Unser Geschäftsführer, Steepan Saravanapavan, war während seiner Schulzeit selbst auf Montage.
+                  Dort hat er Erfahrungen gemacht, die er nun in sein eigenes Unternehmen einfließen lässt.
+                  Er hat kein Verständnis dafür, wie Monteure*innen oft untergebracht werden –
+                  der Zustand vieler Wohnungen entspricht nicht dem, was hart arbeitende Menschen verdienen.
+                </p>
+                <p className="text-gray-600 leading-relaxed">
+                  Steepan weiß, welch harte Arbeit Monteure*innen täglich leisten, und ist der festen Überzeugung,
+                  dass diesen Menschen großartige Apartments zu moderatem Preis zustehen.
+                </p>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-left">
+              <div className="space-y-6">
+                <blockquote className="bg-[#B5A189]/5 border-l-4 border-[#B5A189] rounded-r-xl p-6">
+                  <p className="text-gray-700 italic leading-relaxed">
+                    &bdquo;Oftmals verlassen Monteure*innen ihre Familien, um in Deutschland zeitweise zu arbeiten.
+                    Ich möchte diesen Menschen, die jeden Tag ihr Bestes geben, ein zweites Zuhause bieten.
+                    Ein Zuhause, in dem sie sich wohlfühlen und nach der Arbeit auch mal abschalten können.&ldquo;
+                  </p>
+                  <footer className="mt-3 text-sm font-semibold text-[#B5A189]">— Steepan Saravanapavan</footer>
+                </blockquote>
+
+                <blockquote className="bg-gray-50 border-l-4 border-gray-300 rounded-r-xl p-6">
+                  <p className="text-gray-700 italic leading-relaxed">
+                    &bdquo;Wir glauben, dass ausgeglichene Mitarbeiter auch produktivere sind.
+                    Tun Sie Ihren Mitarbeitern etwas Gutes. Wir freuen uns, die richtige Wohnung für Sie zu finden
+                    und beraten Sie gerne.&ldquo;
+                  </p>
+                  <footer className="mt-3 text-sm font-semibold text-gray-500">— Steepan Saravanapavan</footer>
+                </blockquote>
+              </div>
+            </AnimateOnScroll>
+          </div>
+
+          <AnimateOnScroll animation="fade-up" delay={200}>
+            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { icon: <Home size={24} />, label: "Kernsanierte Wohnungen" },
+                { icon: <Key size={24} />, label: "Voll eingerichtet" },
+                { icon: <Shield size={24} />, label: "Putzservice inklusive" },
+                { icon: <Star size={24} />, label: "Wohlfühlplatz garantiert" },
+              ].map((item) => (
+                <div key={item.label} className="flex flex-col items-center text-center gap-2 bg-white border border-gray-200 rounded-xl p-5 hover:border-[#B5A189]/40 hover:shadow-md transition">
+                  <div className="text-[#B5A189]">{item.icon}</div>
+                  <span className="text-sm font-medium text-gray-700">{item.label}</span>
+                </div>
+              ))}
             </div>
           </AnimateOnScroll>
         </div>

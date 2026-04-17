@@ -5,14 +5,14 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    question: "Wie funktioniert die Wohnungssuche auf Immovation?",
+    question: "Wie funktioniert die Wohnungssuche auf Pavan-rent?",
     answer:
       "Geben Sie einfach Ihre Wunschstadt ein, wählen Sie die Mietart (Festmiete, Kurzmiete oder Monteurswohnung) und filtern Sie nach Ihren Kriterien wie Zimmerzahl, Größe und Budget. Sie können direkt eine unverbindliche Anfrage an den Vermieter senden.",
   },
   {
-    question: "Ist die Nutzung von Immovation kostenlos?",
+    question: "Ist die Nutzung von Pavan-rent kostenlos?",
     answer:
-      "Ja! Für Mietinteressenten ist die Nutzung von Immovation komplett kostenlos. Sie können beliebig viele Wohnungen durchsuchen und Anfragen stellen, ohne dass Kosten anfallen. Auch für Vermieter ist das Inserieren kostenlos.",
+      "Ja! Für Mietinteressenten ist die Nutzung von Pavan-rent komplett kostenlos. Sie können beliebig viele Wohnungen durchsuchen und Anfragen stellen, ohne dass Kosten anfallen. Auch für Vermieter ist das Inserieren kostenlos.",
   },
   {
     question: "Was ist der Unterschied zwischen Festmiete, Kurzmiete und Monteurswohnung?",
@@ -45,7 +45,7 @@ export default function FAQSection() {
         Häufig gestellte Fragen
       </h2>
       <p className="text-gray-500 text-center mb-10">
-        Alles, was Sie über Immovation wissen müssen
+        Alles, was Sie über Pavan-rent wissen müssen
       </p>
       <div className="max-w-3xl mx-auto space-y-3">
         {faqs.map((faq, i) => (

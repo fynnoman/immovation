@@ -27,7 +27,7 @@ const rubik = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Immovation – Finden Sie Ihre perfekte Wohnung",
+  title: "Pavan-rent – Finden Sie Ihre perfekte Wohnung",
   description:
     "Finden Sie Festmieten, Monteurswohnungen und Kurzmieten in ganz Deutschland. Geprüfte Vermieter, schnelle Vermittlung.",
 };

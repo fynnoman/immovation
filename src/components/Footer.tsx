@@ -67,7 +67,7 @@ export default function Footer() {
 
         <div className="mt-10 pt-6 border-t border-gray-200 text-center">
           <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} Immovation. Alle Rechte vorbehalten.
+            © {new Date().getFullYear()} Pavan-rent. Alle Rechte vorbehalten.
           </p>
         </div>
       </div>

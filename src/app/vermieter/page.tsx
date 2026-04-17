@@ -154,7 +154,7 @@ export default function VermieterPage() {
               {
                 name: "Immobilien Meyer GmbH",
                 role: "Hausverwaltung, München",
-                text: "Wir verwalten 120 Einheiten und nutzen Immovation für alle Vermietungen. Das Dashboard ist ein echter Gamechanger.",
+                text: "Wir verwalten 120 Einheiten und nutzen Pavan-rent für alle Vermietungen. Das Dashboard ist ein echter Gamechanger.",
               },
               {
                 name: "Christine Hoffmann",

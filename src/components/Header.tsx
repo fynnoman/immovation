@@ -23,8 +23,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <Logo className="h-8 w-auto" />
-            <span className="text-2xl font-bold tracking-tight text-[#B5A189]" style={{ fontFamily: "var(--font-michroma)" }}>Immovation</span>
+            <Logo className="h-10 w-auto" />
           </Link>
 
           {/* Desktop nav */}
