@@ -48,7 +48,7 @@ export default function BookingWidget({ property }: BookingWidgetProps) {
           </div>
           <Link
             href="/"
-            className="block w-full py-3 bg-[#FDC700] hover:bg-[#d4b500] text-gray-900 rounded-md font-semibold text-sm transition"
+            className="block w-full py-3 bg-[#B8860B] hover:bg-[#9A7209] text-gray-900 rounded-md font-semibold text-sm transition"
           >
             Zurück zur Startseite
           </Link>
@@ -84,7 +84,7 @@ export default function BookingWidget({ property }: BookingWidgetProps) {
               type="date"
               value={moveInDate}
               onChange={(e) => setMoveInDate(e.target.value)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-md text-sm outline-none focus:border-[#FDC700] transition"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-md text-sm outline-none focus:border-[#B8860B] transition"
             />
           </div>
         </div>
@@ -98,7 +98,7 @@ export default function BookingWidget({ property }: BookingWidgetProps) {
             onChange={(e) => setMessage(e.target.value)}
             rows={3}
             placeholder="Stellen Sie sich kurz vor und teilen Sie dem Vermieter mit, warum Sie an der Wohnung interessiert sind..."
-            className="w-full px-3 py-2.5 border border-gray-300 rounded-md text-sm outline-none focus:border-[#FDC700] transition resize-none"
+            className="w-full px-3 py-2.5 border border-gray-300 rounded-md text-sm outline-none focus:border-[#B8860B] transition resize-none"
           />
         </div>
       </div>
@@ -106,7 +106,7 @@ export default function BookingWidget({ property }: BookingWidgetProps) {
       {/* Submit button */}
       <button
         onClick={() => setShowConfirmation(true)}
-        className="w-full py-3 bg-[#FDC700] hover:bg-[#d4b500] text-gray-900 rounded-md font-bold text-base transition animate-pulse-glow btn-ripple active:scale-95 mb-4"
+        className="w-full py-3 bg-[#B8860B] hover:bg-[#9A7209] text-gray-900 rounded-md font-bold text-base transition animate-pulse-glow btn-ripple active:scale-95 mb-4"
       >
         Mietanfrage senden
       </button>

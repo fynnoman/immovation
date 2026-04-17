@@ -11,7 +11,7 @@ export default function VermieterPage() {
       <section className="bg-gray-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="max-w-2xl">
-            <span className="inline-block text-xs font-semibold text-[#FDC700] bg-[#FDC700]/10 px-3 py-1 rounded-full mb-4">
+            <span className="inline-block text-xs font-semibold text-[#B8860B] bg-[#B8860B]/10 px-3 py-1 rounded-full mb-4">
               Für Vermieter
             </span>
             <h1 className="text-3xl md:text-5xl font-bold mb-4">
@@ -25,7 +25,7 @@ export default function VermieterPage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/search"
-                className="bg-[#FDC700] hover:bg-[#d4b500] text-gray-900 px-8 py-3.5 rounded-md font-semibold transition active:scale-95"
+                className="bg-[#B8860B] hover:bg-[#9A7209] text-gray-900 px-8 py-3.5 rounded-md font-semibold transition active:scale-95"
               >
                 Jetzt kostenlos inserieren
               </Link>
@@ -102,8 +102,8 @@ export default function VermieterPage() {
               },
             ].map((benefit) => (
               <div key={benefit.title} className="bg-white border border-gray-200 rounded-xl p-6 hover-lift transition">
-                <div className="w-12 h-12 bg-[#FDC700]/10 rounded-xl flex items-center justify-center mb-4">
-                  <benefit.icon size={24} className="text-[#FDC700]" />
+                <div className="w-12 h-12 bg-[#B8860B]/10 rounded-xl flex items-center justify-center mb-4">
+                  <benefit.icon size={24} className="text-[#B8860B]" />
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">{benefit.title}</h3>
                 <p className="text-sm text-gray-500 leading-relaxed">{benefit.desc}</p>
@@ -127,7 +127,7 @@ export default function VermieterPage() {
               { step: "4", title: "Vermieten", desc: "Wählen Sie den passenden Mieter und schließen Sie den Vertrag ab." },
             ].map((item) => (
               <div key={item.step} className="relative text-center">
-                <div className="w-12 h-12 bg-[#FDC700] rounded-full flex items-center justify-center mx-auto mb-4 text-gray-900 font-bold text-lg">
+                <div className="w-12 h-12 bg-[#B8860B] rounded-full flex items-center justify-center mx-auto mb-4 text-gray-900 font-bold text-lg">
                   {item.step}
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">{item.title}</h3>
@@ -165,7 +165,7 @@ export default function VermieterPage() {
               <div key={t.name} className="bg-white border border-gray-200 rounded-xl p-6">
                 <div className="flex items-center gap-1 mb-4">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <div key={i} className="w-2 h-2 rounded-full bg-[#FDC700]" />
+                    <div key={i} className="w-2 h-2 rounded-full bg-[#B8860B]" />
                   ))}
                 </div>
                 <p className="text-sm text-gray-600 leading-relaxed mb-4 italic">
@@ -182,7 +182,7 @@ export default function VermieterPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-[#FDC700] py-16">
+      <section className="bg-[#B8860B] py-16">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
             Bereit, Ihre Wohnung zu vermieten?

@@ -25,10 +25,10 @@ import PropertyCard from "@/components/HotelCard";
 import DetailFavoriteButton from "./DetailFavoriteButton";
 
 function getRatingColor(rating: number): string {
-  if (rating >= 9) return "bg-[#FDC700]";
-  if (rating >= 8) return "bg-[#FDC700]/90";
-  if (rating >= 7) return "bg-[#FDC700]/75";
-  return "bg-[#FDC700]/60";
+  if (rating >= 9) return "bg-[#B8860B]";
+  if (rating >= 8) return "bg-[#B8860B]/90";
+  if (rating >= 7) return "bg-[#B8860B]/75";
+  return "bg-[#B8860B]/60";
 }
 
 function getRentalTypeBadge(type: string) {
@@ -128,10 +128,10 @@ export default async function PropertyPage({
 
           <div className="flex items-center gap-2 shrink-0">
             <DetailFavoriteButton propertyId={property.id} />
-            <button className="p-2 border border-gray-300 rounded-md hover:border-[#FDC700] transition">
+            <button className="p-2 border border-gray-300 rounded-md hover:border-[#B8860B] transition">
               <Share2 size={20} className="text-gray-500" />
             </button>
-            <button className="px-6 py-2.5 bg-[#FDC700] hover:bg-[#d4b500] text-gray-900 rounded-md font-semibold text-sm transition">
+            <button className="px-6 py-2.5 bg-[#B8860B] hover:bg-[#9A7209] text-gray-900 rounded-md font-semibold text-sm transition">
               Anfrage senden
             </button>
           </div>
@@ -143,8 +143,8 @@ export default async function PropertyPage({
         {/* Quick facts */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-white border border-gray-200 rounded-lg p-4 flex items-center gap-3">
-            <div className="w-10 h-10 bg-[#FDC700]/10 rounded-lg flex items-center justify-center">
-              <DoorOpen size={20} className="text-[#FDC700]" />
+            <div className="w-10 h-10 bg-[#B8860B]/10 rounded-lg flex items-center justify-center">
+              <DoorOpen size={20} className="text-[#B8860B]" />
             </div>
             <div>
               <p className="text-xs text-gray-500">Zimmer</p>
@@ -152,8 +152,8 @@ export default async function PropertyPage({
             </div>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-4 flex items-center gap-3">
-            <div className="w-10 h-10 bg-[#FDC700]/10 rounded-lg flex items-center justify-center">
-              <Maximize size={20} className="text-[#FDC700]" />
+            <div className="w-10 h-10 bg-[#B8860B]/10 rounded-lg flex items-center justify-center">
+              <Maximize size={20} className="text-[#B8860B]" />
             </div>
             <div>
               <p className="text-xs text-gray-500">Wohnfläche</p>
@@ -161,8 +161,8 @@ export default async function PropertyPage({
             </div>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-4 flex items-center gap-3">
-            <div className="w-10 h-10 bg-[#FDC700]/10 rounded-lg flex items-center justify-center">
-              <Sofa size={20} className="text-[#FDC700]" />
+            <div className="w-10 h-10 bg-[#B8860B]/10 rounded-lg flex items-center justify-center">
+              <Sofa size={20} className="text-[#B8860B]" />
             </div>
             <div>
               <p className="text-xs text-gray-500">Ausstattung</p>
@@ -170,8 +170,8 @@ export default async function PropertyPage({
             </div>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-4 flex items-center gap-3">
-            <div className="w-10 h-10 bg-[#FDC700]/10 rounded-lg flex items-center justify-center">
-              <Home size={20} className="text-[#FDC700]" />
+            <div className="w-10 h-10 bg-[#B8860B]/10 rounded-lg flex items-center justify-center">
+              <Home size={20} className="text-[#B8860B]" />
             </div>
             <div>
               <p className="text-xs text-gray-500">Monatsmiete</p>
@@ -263,7 +263,7 @@ export default async function PropertyPage({
                     <div className="flex items-center gap-2">
                       <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-[#FDC700] rounded-full"
+                          className="h-full bg-[#B8860B] rounded-full"
                           style={{
                             width: `${(parseFloat(cat.score) / 10) * 100}%`,
                           }}
@@ -312,7 +312,7 @@ export default async function PropertyPage({
                     key={amenity}
                     className="flex items-center gap-2 text-sm text-gray-700"
                   >
-                    <span className="text-[#FDC700]">
+                    <span className="text-[#B8860B]">
                       {getAmenityIcon(amenity)}
                     </span>
                     {amenity}
@@ -353,7 +353,7 @@ export default async function PropertyPage({
                   >
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-[#FDC700]/10 rounded-full flex items-center justify-center text-sm font-bold text-[#FDC700]">
+                        <div className="w-8 h-8 bg-[#B8860B]/10 rounded-full flex items-center justify-center text-sm font-bold text-[#B8860B]">
                           {review.name[0]}
                         </div>
                         <div>
@@ -363,7 +363,7 @@ export default async function PropertyPage({
                           <p className="text-xs text-gray-500">{review.date}</p>
                         </div>
                       </div>
-                      <span className="bg-[#FDC700] text-gray-900 text-xs font-bold px-2 py-1 rounded">
+                      <span className="bg-[#B8860B] text-gray-900 text-xs font-bold px-2 py-1 rounded">
                         {review.score}
                       </span>
                     </div>
@@ -399,7 +399,7 @@ export default async function PropertyPage({
                 </h2>
                 <Link
                   href={`/search?destination=${encodeURIComponent(property.city)}`}
-                  className="text-sm text-[#FDC700] hover:text-[#d4b500] font-medium flex items-center gap-1 transition"
+                  className="text-sm text-[#B8860B] hover:text-[#9A7209] font-medium flex items-center gap-1 transition"
                 >
                   Alle in {property.city} <ArrowRight size={14} />
                 </Link>

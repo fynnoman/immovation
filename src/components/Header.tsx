@@ -24,7 +24,7 @@ export default function Header() {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <Logo className="h-8 w-auto" />
-            <span className="text-2xl font-bold tracking-tight text-[#FDC700]" style={{ fontFamily: "var(--font-michroma)" }}>Immovation</span>
+            <span className="text-2xl font-bold tracking-tight text-[#B8860B]" style={{ fontFamily: "var(--font-michroma)" }}>Immovation</span>
           </Link>
 
           {/* Desktop nav */}
@@ -57,7 +57,7 @@ export default function Header() {
             </Link>
             <Link
               href="/"
-              className="ml-2 flex items-center gap-1 px-4 py-2 bg-[#FDC700] text-gray-900 rounded-sm text-sm font-semibold hover:bg-[#d4b500] transition"
+              className="ml-2 flex items-center gap-1 px-4 py-2 bg-[#B8860B] text-gray-900 rounded-sm text-sm font-semibold hover:bg-[#9A7209] transition"
             >
               <User size={18} />
               Anmelden
@@ -95,7 +95,7 @@ export default function Header() {
                 href={item.href}
                 className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition ${
                   item.active
-                    ? "bg-[#FDC700] text-gray-900"
+                    ? "bg-[#B8860B] text-gray-900"
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
               >

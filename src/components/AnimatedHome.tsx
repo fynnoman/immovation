@@ -22,7 +22,7 @@ export default function AnimatedHome({ featuredProperties, popularCities }: Anim
   return (
     <div>
       {/* Hero section */}
-      <section className="bg-[#FDC700] pb-24 pt-10 overflow-hidden">
+      <section className="bg-[#B8860B] pb-24 pt-10 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <AnimateOnScroll animation="fade-up" duration={800} threshold={0}>
             <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-2">
@@ -113,10 +113,10 @@ export default function AnimatedHome({ featuredProperties, popularCities }: Anim
             <Link
               key={dest.city}
               href={`/search?destination=${encodeURIComponent(dest.city)}`}
-              className="group bg-white border border-gray-200 rounded-xl p-5 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-[#FDC700]"
+              className="group bg-white border border-gray-200 rounded-xl p-5 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-[#B8860B]"
             >
-              <div className="w-10 h-10 bg-[#FDC700]/10 rounded-lg flex items-center justify-center mb-3 transition-all duration-300 group-hover:bg-[#FDC700] group-hover:scale-110">
-                <MapPin size={18} className="text-[#FDC700] transition-colors duration-300 group-hover:text-white" />
+              <div className="w-10 h-10 bg-[#B8860B]/10 rounded-lg flex items-center justify-center mb-3 transition-all duration-300 group-hover:bg-[#B8860B] group-hover:scale-110">
+                <MapPin size={18} className="text-[#B8860B] transition-colors duration-300 group-hover:text-white" />
               </div>
               <h3 className="font-bold text-gray-900 text-sm">
                 {dest.city}
@@ -158,7 +158,7 @@ export default function AnimatedHome({ featuredProperties, popularCities }: Anim
                     <Home size={28} className="text-gray-400" />
                   </div>
                 )}
-                <div className="absolute top-3 left-3 bg-[#FDC700] text-gray-900 text-xs font-bold px-2 py-1 rounded-lg">
+                <div className="absolute top-3 left-3 bg-[#B8860B] text-gray-900 text-xs font-bold px-2 py-1 rounded-lg">
                   {property.rating}
                 </div>
               </div>
@@ -227,7 +227,7 @@ export default function AnimatedHome({ featuredProperties, popularCities }: Anim
               },
             ].map((item) => (
               <div key={item.step} className="relative text-center group">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-[#FDC700] rounded-2xl mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-[#B8860B] rounded-2xl mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                   <item.icon size={28} className="text-gray-900" />
                 </div>
                 <div className="absolute -top-2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-7 h-7 bg-gray-900 text-white rounded-full flex items-center justify-center text-xs font-bold">
@@ -253,8 +253,8 @@ export default function AnimatedHome({ featuredProperties, popularCities }: Anim
                 { icon: Award, value: 4.8, suffix: " / 5", label: "Durchschnittsbewertung", decimals: 1, separator: "," },
               ].map((stat) => (
                 <div key={stat.label} className="text-center group">
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-[#FDC700]/20 rounded-xl mb-3 group-hover:scale-110 group-hover:bg-[#FDC700]/30 transition-all duration-300">
-                    <stat.icon size={24} className="text-[#FDC700]" />
+                  <div className="inline-flex items-center justify-center w-12 h-12 bg-[#B8860B]/20 rounded-xl mb-3 group-hover:scale-110 group-hover:bg-[#B8860B]/30 transition-all duration-300">
+                    <stat.icon size={24} className="text-[#B8860B]" />
                   </div>
                   <p className="text-3xl font-bold text-white mb-1">
                     <CountUp
@@ -306,8 +306,8 @@ export default function AnimatedHome({ featuredProperties, popularCities }: Anim
                 },
               ].map((usp) => (
                 <div key={usp.title} className="text-center group cursor-default">
-                  <div className="inline-flex items-center justify-center w-14 h-14 bg-[#FDC700]/10 rounded-full mb-4 group-hover:bg-[#FDC700]/20 group-hover:scale-110 transition-all duration-300">
-                    <usp.icon size={28} className="text-[#FDC700]" />
+                  <div className="inline-flex items-center justify-center w-14 h-14 bg-[#B8860B]/10 rounded-full mb-4 group-hover:bg-[#B8860B]/20 group-hover:scale-110 transition-all duration-300">
+                    <usp.icon size={28} className="text-[#B8860B]" />
                   </div>
                   <h3 className="font-bold text-gray-900 mb-2">{usp.title}</h3>
                   <p className="text-sm text-gray-500">{usp.desc}</p>
@@ -362,7 +362,7 @@ export default function AnimatedHome({ featuredProperties, popularCities }: Anim
                     <Star
                       key={i}
                       size={16}
-                      className={`transition-transform duration-300 ${i < t.rating ? "text-[#FDC700] fill-[#FDC700]" : "text-gray-200"}`}
+                      className={`transition-transform duration-300 ${i < t.rating ? "text-[#B8860B] fill-[#B8860B]" : "text-gray-200"}`}
                       style={{ transitionDelay: `${i * 50}ms` }}
                     />
                   ))}
@@ -371,7 +371,7 @@ export default function AnimatedHome({ featuredProperties, popularCities }: Anim
                   &ldquo;{t.text}&rdquo;
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-[#FDC700]/10 rounded-full flex items-center justify-center font-bold text-[#FDC700] text-sm group-hover:bg-[#FDC700] group-hover:text-gray-900 transition-colors duration-300">
+                  <div className="w-10 h-10 bg-[#B8860B]/10 rounded-full flex items-center justify-center font-bold text-[#B8860B] text-sm group-hover:bg-[#B8860B] group-hover:text-gray-900 transition-colors duration-300">
                     {t.name.split(" ").map((n) => n[0]).join("")}
                   </div>
                   <div>
@@ -391,7 +391,7 @@ export default function AnimatedHome({ featuredProperties, popularCities }: Anim
           <AnimateOnScroll animation="fade-up">
             <div className="flex flex-col md:flex-row items-center gap-10 bg-white border border-gray-200 rounded-2xl p-8 md:p-12">
               <div className="flex-1">
-                <span className="inline-block text-xs font-semibold text-[#FDC700] bg-[#FDC700]/10 px-3 py-1 rounded-full mb-4">
+                <span className="inline-block text-xs font-semibold text-[#B8860B] bg-[#B8860B]/10 px-3 py-1 rounded-full mb-4">
                   Für Vermieter
                 </span>
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
@@ -403,7 +403,7 @@ export default function AnimatedHome({ featuredProperties, popularCities }: Anim
                 <div className="flex flex-wrap gap-4">
                   <Link
                     href="/search"
-                    className="bg-[#FDC700] hover:bg-[#d4b500] text-gray-900 px-6 py-3 rounded-md font-semibold text-sm transition animate-pulse-glow btn-ripple active:scale-95"
+                    className="bg-[#B8860B] hover:bg-[#9A7209] text-gray-900 px-6 py-3 rounded-md font-semibold text-sm transition animate-pulse-glow btn-ripple active:scale-95"
                   >
                     Jetzt kostenlos inserieren
                   </Link>
@@ -416,7 +416,7 @@ export default function AnimatedHome({ featuredProperties, popularCities }: Anim
                 </div>
               </div>
               <div className="w-full md:w-72 shrink-0">
-                <div className="bg-[#FDC700]/5 border border-[#FDC700]/20 rounded-xl p-6 space-y-4">
+                <div className="bg-[#B8860B]/5 border border-[#B8860B]/20 rounded-xl p-6 space-y-4">
                   {[
                     { label: "Aktive Inserate", value: "12.500+" },
                     { label: "Ø Vermittlungsdauer", value: "14 Tage" },
@@ -442,7 +442,7 @@ export default function AnimatedHome({ featuredProperties, popularCities }: Anim
       {/* Newsletter */}
       <section className="max-w-7xl mx-auto px-4 py-16 overflow-hidden">
         <AnimateOnScroll animation="scale-up">
-          <div className="bg-[#FDC700] rounded-xl p-8 md:p-12 text-center">
+          <div className="bg-[#B8860B] rounded-xl p-8 md:p-12 text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
               Neue Wohnungen direkt in Ihr Postfach
             </h2>

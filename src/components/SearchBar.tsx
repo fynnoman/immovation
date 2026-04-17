@@ -39,7 +39,7 @@ export default function SearchBar({
       <div className="flex flex-col md:flex-row gap-2">
         {/* Destination */}
         <div className="flex-1 relative">
-          <div className="flex items-center gap-2 border border-gray-300 rounded-md px-4 py-3 hover:border-[#FDC700] focus-within:border-[#FDC700] focus-within:ring-2 focus-within:ring-[#FDC700]/20 transition">
+          <div className="flex items-center gap-2 border border-gray-300 rounded-md px-4 py-3 hover:border-[#B8860B] focus-within:border-[#B8860B] focus-within:ring-2 focus-within:ring-[#B8860B]/20 transition">
             <MapPin size={20} className="text-gray-400 shrink-0" />
             <input
               type="text"
@@ -53,7 +53,7 @@ export default function SearchBar({
 
         {/* Rental type */}
         <div className="md:w-52">
-          <div className="flex items-center gap-2 border border-gray-300 rounded-md px-4 py-3 hover:border-[#FDC700] focus-within:border-[#FDC700] focus-within:ring-2 focus-within:ring-[#FDC700]/20 transition">
+          <div className="flex items-center gap-2 border border-gray-300 rounded-md px-4 py-3 hover:border-[#B8860B] focus-within:border-[#B8860B] focus-within:ring-2 focus-within:ring-[#B8860B]/20 transition">
             <Home size={20} className="text-gray-400 shrink-0" />
             <select
               value={rentalType}
@@ -70,7 +70,7 @@ export default function SearchBar({
 
         {/* Min rooms */}
         <div className="md:w-44">
-          <div className="flex items-center gap-2 border border-gray-300 rounded-md px-4 py-3 hover:border-[#FDC700] focus-within:border-[#FDC700] focus-within:ring-2 focus-within:ring-[#FDC700]/20 transition">
+          <div className="flex items-center gap-2 border border-gray-300 rounded-md px-4 py-3 hover:border-[#B8860B] focus-within:border-[#B8860B] focus-within:ring-2 focus-within:ring-[#B8860B]/20 transition">
             <Maximize size={20} className="text-gray-400 shrink-0" />
             <select
               value={minRooms}
@@ -89,7 +89,7 @@ export default function SearchBar({
         {/* Search button */}
         <button
           onClick={handleSearch}
-          className="bg-[#FDC700] hover:bg-[#d4b500] text-gray-900 px-8 py-3 rounded-md font-semibold text-sm flex items-center justify-center gap-2 transition shrink-0"
+          className="bg-[#B8860B] hover:bg-[#9A7209] text-gray-900 px-8 py-3 rounded-md font-semibold text-sm flex items-center justify-center gap-2 transition shrink-0"
         >
           <Search size={20} />
           Suchen
