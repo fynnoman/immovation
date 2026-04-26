@@ -1,41 +1,44 @@
 import Link from "next/link";
 
+type FooterLink = { label: string; href: string };
+type FooterSection = { title: string; links: FooterLink[] };
+
 export default function Footer() {
-  const footerLinks = [
+  const footerLinks: FooterSection[] = [
     {
       title: "Hilfe",
       links: [
-        "Kundenservice",
-        "FAQ",
-        "Sicherheitsinformationen",
-        "Streitbeilegung",
+        { label: "Kundenservice", href: "#" },
+        { label: "FAQ", href: "#" },
+        { label: "Sicherheitsinformationen", href: "#" },
+        { label: "Streitbeilegung", href: "#" },
       ],
     },
     {
       title: "Entdecken",
       links: [
-        "Wohnungsangebote",
-        "Mietratgeber",
-        "Bewertungen",
-        "Vermieter-Community",
+        { label: "Wohnungsangebote", href: "#" },
+        { label: "Mietratgeber", href: "#" },
+        { label: "Bewertungen", href: "#" },
+        { label: "Vermieter-Community", href: "#" },
       ],
     },
     {
       title: "Bedingungen & Einstellungen",
       links: [
-        "Datenschutz & Cookies",
-        "AGB",
-        "Impressum",
-        "Unternehmensinfo",
+        { label: "Datenschutz & Cookies", href: "/datenschutz" },
+        { label: "AGB", href: "/agb" },
+        { label: "Impressum", href: "/impressum" },
+        { label: "Unternehmensinfo", href: "#" },
       ],
     },
     {
       title: "Partner",
       links: [
-        "Wohnung inserieren",
-        "Partnerprogramm",
-        "Werbung",
-        "Presse",
+        { label: "Wohnung inserieren", href: "/vermieter" },
+        { label: "Partnerprogramm", href: "#" },
+        { label: "Werbung", href: "#" },
+        { label: "Presse", href: "#" },
       ],
     },
   ];
@@ -51,12 +54,12 @@ export default function Footer() {
               </h3>
               <ul className="space-y-2">
                 {section.links.map((link) => (
-                  <li key={link}>
+                  <li key={link.label}>
                     <Link
-                      href="#"
+                      href={link.href}
                       className="text-sm text-gray-600 hover:text-gray-900 hover:underline"
                     >
-                      {link}
+                      {link.label}
                     </Link>
                   </li>
                 ))}
