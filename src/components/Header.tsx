@@ -1,149 +1,159 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import {
-  Menu,
-  X,
-  Globe,
-  HelpCircle,
-  User,
-  Heart,
-} from "lucide-react";
-import Logo from "@/components/Logo";
+import { useEffect, useState } from "react";
+import { Menu, X, Globe, HelpCircle, User, Heart } from "lucide-react";
 import { useFavorites } from "@/components/FavoritesProvider";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { count } = useFavorites();
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="bg-white text-gray-800 border-b border-gray-200">
-      {/* Top bar */}
-      <div className="max-w-7xl mx-auto px-4 py-3">
-        <div className="flex items-center justify-between">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/85 backdrop-blur-xl border-b shadow-soft"
+          : "bg-transparent border-b border-transparent"
+      }`}
+      style={scrolled ? { borderColor: "var(--color-border)" } : undefined}
+    >
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex items-center justify-between h-[72px]">
           <Link href="/" className="flex items-center gap-2">
-            <Logo className="h-10 w-auto" />
+            <span
+              className="font-display text-[22px] font-semibold tracking-tight"
+              style={{ color: "var(--color-text)" }}
+            >
+              Immovation
+              <span style={{ color: "var(--color-accent)" }}>.</span>
+            </span>
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1">
+            <NavLink href="/search">Wohnungen</NavLink>
+            <NavLink href="/search?type=festmiete">Festmiete</NavLink>
+            <NavLink href="/search?type=monteurswohnung">Monteure</NavLink>
+            <NavLink href="/search?type=kurzmiete">Kurzmiete</NavLink>
+            <NavLink href="/vermieter">Vermieten</NavLink>
+          </nav>
+
+          <div className="hidden lg:flex items-center gap-2">
             <Link
               href="/favoriten"
-              className="relative flex items-center gap-1 px-3 py-2 rounded-sm hover:bg-gray-100 text-sm font-medium transition text-gray-600"
+              className="relative flex items-center gap-1.5 px-3 py-2 rounded-full text-sm font-medium transition hover:bg-[var(--color-cream)]"
+              style={{ color: "var(--color-text-secondary)" }}
             >
-              <Heart size={18} />
-              Favoriten
+              <Heart size={16} />
               {count > 0 && (
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+                <span
+                  className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 text-[10px] font-bold rounded-full flex items-center justify-center text-white"
+                  style={{ background: "var(--color-accent)" }}
+                >
                   {count}
                 </span>
               )}
             </Link>
-            <button className="flex items-center gap-1 px-3 py-2 rounded-sm hover:bg-gray-100 text-sm font-medium transition text-gray-600">
-              <Globe size={18} />
-              DE
-            </button>
-            <button className="flex items-center gap-1 px-3 py-2 rounded-sm hover:bg-gray-100 text-sm font-medium transition text-gray-600">
-              <HelpCircle size={18} />
-              Hilfe
-            </button>
-            <Link
-              href="/vermieter"
-              className="px-4 py-2 rounded-sm hover:bg-gray-100 text-sm font-medium transition text-gray-600"
+            <button
+              className="flex items-center gap-1.5 px-3 py-2 rounded-full text-sm font-medium transition hover:bg-[var(--color-cream)]"
+              style={{ color: "var(--color-text-secondary)" }}
+              aria-label="Sprache"
             >
-              Wohnung inserieren
-            </Link>
+              <Globe size={16} />
+              <span className="text-xs font-semibold tracking-wide">DE</span>
+            </button>
+            <button
+              className="flex items-center gap-1.5 px-3 py-2 rounded-full text-sm font-medium transition hover:bg-[var(--color-cream)]"
+              style={{ color: "var(--color-text-secondary)" }}
+              aria-label="Hilfe"
+            >
+              <HelpCircle size={16} />
+            </button>
             <Link
               href="/"
-              className="ml-2 flex items-center gap-1 px-4 py-2 bg-[#B5A189] text-gray-900 rounded-sm text-sm font-semibold hover:bg-[#9B8B73] transition"
+              className="ml-2 flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition border"
+              style={{
+                color: "var(--color-text)",
+                borderColor: "var(--color-border-warm)",
+                background: "rgba(255,255,255,0.7)",
+              }}
             >
-              <User size={18} />
+              <User size={15} />
               Anmelden
             </Link>
-            <Link
-              href="/"
-              className="px-4 py-2 border border-gray-300 text-gray-700 rounded-sm text-sm font-semibold hover:bg-gray-50 transition"
-            >
+            <Link href="/" className="btn-primary !py-2.5 !px-5 !text-sm">
               Registrieren
             </Link>
-          </nav>
+          </div>
 
-          {/* Mobile menu toggle */}
           <button
-            className="md:hidden p-2 hover:bg-gray-100 rounded-sm transition"
+            className="lg:hidden p-2 rounded-full transition hover:bg-[var(--color-cream)]"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Menü"
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
-      {/* Category nav */}
-      <div className="border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4">
-          <nav className="flex gap-1 overflow-x-auto py-2 -mb-px scrollbar-hide">
+      {mobileMenuOpen && (
+        <div
+          className="lg:hidden border-t"
+          style={{ borderColor: "var(--color-border)", background: "var(--color-background)" }}
+        >
+          <div className="px-6 py-4 space-y-1">
             {[
-              { label: "Alle Wohnungen", href: "/search", active: true },
-              { label: "Festmiete", href: "/search?type=festmiete" },
-              { label: "Monteurswohnungen", href: "/search?type=monteurswohnung" },
-              { label: "Kurzmiete", href: "/search?type=kurzmiete" },
+              { href: "/search", label: "Alle Wohnungen" },
+              { href: "/search?type=festmiete", label: "Festmiete" },
+              { href: "/search?type=monteurswohnung", label: "Monteurswohnungen" },
+              { href: "/search?type=kurzmiete", label: "Kurzmiete" },
+              { href: "/favoriten", label: `Favoriten${count > 0 ? ` (${count})` : ""}` },
+              { href: "/vermieter", label: "Wohnung inserieren" },
             ].map((item) => (
               <Link
-                key={item.label}
+                key={item.href}
                 href={item.href}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition ${
-                  item.active
-                    ? "bg-[#B5A189] text-gray-900"
-                    : "text-gray-600 hover:bg-gray-100"
-                }`}
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-3 py-2.5 rounded-lg text-sm font-medium transition hover:bg-[var(--color-cream)]"
+                style={{ color: "var(--color-text)" }}
               >
                 {item.label}
               </Link>
             ))}
-          </nav>
-        </div>
-      </div>
-
-      {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden border-t border-gray-200 bg-gray-50">
-          <div className="px-4 py-3 space-y-2">
-            <Link
-              href="/favoriten"
-              className="flex items-center gap-2 px-3 py-2 rounded-sm hover:bg-gray-100 text-sm text-gray-700"
-              onClick={() => setMobileMenuOpen(false)}
+            <div
+              className="pt-3 mt-3 border-t flex gap-2"
+              style={{ borderColor: "var(--color-border)" }}
             >
-              <Heart size={16} />
-              Favoriten {count > 0 && `(${count})`}
-            </Link>
-            <Link
-              href="/"
-              className="block px-3 py-2 rounded-sm hover:bg-gray-100 text-sm text-gray-700"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Anmelden
-            </Link>
-            <Link
-              href="/"
-              className="block px-3 py-2 rounded-sm hover:bg-gray-100 text-sm text-gray-700"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Registrieren
-            </Link>
-            <Link
-              href="/vermieter"
-              className="block px-3 py-2 rounded-sm hover:bg-gray-100 text-sm text-gray-700"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Wohnung inserieren
-            </Link>
-            <button className="flex items-center gap-2 px-3 py-2 rounded-sm hover:bg-gray-100 text-sm w-full text-gray-700">
-              <HelpCircle size={16} /> Hilfe
-            </button>
+              <Link href="/" className="btn-secondary flex-1" onClick={() => setMobileMenuOpen(false)}>
+                Anmelden
+              </Link>
+              <Link href="/" className="btn-primary flex-1" onClick={() => setMobileMenuOpen(false)}>
+                Registrieren
+              </Link>
+            </div>
           </div>
         </div>
       )}
     </header>
+  );
+}
+
+function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link
+      href={href}
+      className="px-4 py-2 rounded-full text-sm font-medium transition hover:bg-[var(--color-cream)]"
+      style={{ color: "var(--color-text-secondary)" }}
+    >
+      {children}
+    </Link>
   );
 }

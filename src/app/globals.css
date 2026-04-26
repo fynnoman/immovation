@@ -1,166 +1,182 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #1a1a1a;
-  --accent: #B5A189;
-  --accent-dark: #9B8B73;
-  --accent-light: #f5edd6;
-  --gray-50: #f9fafb;
-  --gray-100: #f3f4f6;
-  --gray-200: #e5e7eb;
-  --gray-300: #d1d5db;
-  --gray-400: #9ca3af;
-  --gray-500: #6b7280;
-  --gray-600: #4b5563;
-  --gray-700: #374151;
-  --gray-800: #1f2937;
-  --gray-900: #111827;
+  /* Immovation design tokens */
+  --color-background: #fbf8f4;
+  --color-background-deep: #f3ece2;
+  --color-cream: #f7eedf;
+  --color-surface: #ffffff;
+  --color-surface-hover: #eadfd1;
+
+  --color-accent: #a66b41;
+  --color-accent-bright: #c88c60;
+  --color-accent-deep: #7a4d2f;
+  --color-accent-soft: #e8d3be;
+  --color-accent-glow: rgba(166, 107, 65, 0.14);
+  --color-accent-glow-strong: rgba(166, 107, 65, 0.35);
+
+  --color-text: #1c140d;
+  --color-text-secondary: #6b5a49;
+  --color-text-muted: #8a7a68;
+
+  --color-border: rgba(28, 20, 13, 0.08);
+  --color-border-light: rgba(28, 20, 13, 0.12);
+  --color-border-warm: rgba(166, 107, 65, 0.22);
+
+  --background: var(--color-background);
+  --foreground: var(--color-text);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
-  --color-accent-dark: var(--accent-dark);
-  --color-accent-light: var(--accent-light);
-  --font-sans: var(--font-rubik);
-  --font-mono: var(--font-rubik);
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-text);
+  --color-accent: var(--color-accent);
+  --color-accent-bright: var(--color-accent-bright);
+  --color-accent-deep: var(--color-accent-deep);
+  --color-accent-soft: var(--color-accent-soft);
+  --color-cream: var(--color-cream);
+  --color-text-secondary: var(--color-text-secondary);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-inter);
 }
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-background);
+  color: var(--color-text);
+  letter-spacing: -0.01em;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+.font-display {
+  letter-spacing: -0.035em;
+  font-weight: 600;
 }
-::-webkit-scrollbar-track {
-  background: var(--gray-100);
-}
+
+.tracking-eyebrow { letter-spacing: 0.22em; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-background-deep); }
 ::-webkit-scrollbar-thumb {
-  background: var(--gray-300);
-  border-radius: 4px;
+  background: var(--color-accent-soft);
+  border-radius: 6px;
+  border: 2px solid var(--color-background-deep);
 }
-::-webkit-scrollbar-thumb:hover {
-  background: var(--gray-400);
-}
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
 
-/* Date picker styles */
 input[type="date"]::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-  opacity: 0.6;
+  cursor: pointer; opacity: 0.55;
 }
-input[type="date"]::-webkit-calendar-picker-indicator:hover {
-  opacity: 1;
+input[type="date"]::-webkit-calendar-picker-indicator:hover { opacity: 1; }
+
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 60px -28px rgba(28, 20, 13, 0.18);
 }
 
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
+.shadow-soft { box-shadow: 0 4px 20px -10px rgba(28, 20, 13, 0.08); }
+.shadow-elevated {
+  box-shadow: 0 30px 80px -40px rgba(28, 20, 13, 0.18),
+              0 8px 24px -12px rgba(28, 20, 13, 0.08);
+}
+.shadow-accent-glow {
+  box-shadow: 0 20px 50px -15px var(--color-accent-glow-strong);
 }
 
-/* Pulse glow for CTA buttons */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(253, 199, 0, 0.4); }
-  50% { box-shadow: 0 0 20px 4px rgba(253, 199, 0, 0.25); }
+  0%, 100% { box-shadow: 0 0 0 0 var(--color-accent-glow); }
+  50%      { box-shadow: 0 0 28px 4px var(--color-accent-glow-strong); }
 }
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
 
-.animate-pulse-glow {
-  animation: pulse-glow 2.5s ease-in-out infinite;
-}
-
-/* Float animation for icons */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  50%      { transform: translateY(-6px); }
 }
+.animate-float { animation: float 4s ease-in-out infinite; }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-/* Shimmer effect for loading states */
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
+  0%   { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
-
 .animate-shimmer {
-  background: linear-gradient(90deg, transparent 25%, rgba(253, 199, 0, 0.08) 50%, transparent 75%);
+  background: linear-gradient(90deg, transparent 25%, var(--color-accent-glow) 50%, transparent 75%);
   background-size: 200% 100%;
   animation: shimmer 2s ease-in-out infinite;
 }
 
-/* Slide in from bottom for cards */
-@keyframes slide-up-fade {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent-deep);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--color-border-warm);
+  backdrop-filter: blur(8px);
 }
 
-/* Hover lift for cards */
-.hover-lift {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.75rem;
+  border-radius: 9999px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 14px 40px -16px var(--color-accent-glow-strong);
 }
-.hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.12);
-}
+.btn-primary:hover { background: var(--color-accent-bright); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
 
-/* Gradient text shimmer */
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.65rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border-warm);
+  background: rgba(255,255,255,0.85);
+  color: var(--color-text);
+  font-weight: 500;
+  font-size: 14px;
+  backdrop-filter: blur(8px);
+  transition: background 0.25s ease, border-color 0.25s ease;
 }
+.btn-secondary:hover { background: var(--color-cream); border-color: var(--color-accent); }
 
-/* Scale bounce on hover */
-.hover-bounce {
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.hover-bounce:hover {
-  transform: scale(1.05);
-}
-
-/* Ripple effect base */
-.btn-ripple {
-  position: relative;
-  overflow: hidden;
-}
-.btn-ripple::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at var(--ripple-x, 50%) var(--ripple-y, 50%), rgba(255,255,255,0.3) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.btn-ripple:hover::after {
-  opacity: 1;
-}
-
-/* Smooth underline animation */
-.animated-underline {
-  position: relative;
-}
-.animated-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #B5A189;
-  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.animated-underline:hover::after {
-  width: 100%;
+.bg-warm-gradient {
+  background:
+    radial-gradient(60% 80% at 80% 0%, var(--color-accent-soft) 0%, transparent 60%),
+    radial-gradient(50% 70% at 0% 100%, var(--color-cream) 0%, transparent 55%),
+    var(--color-background);
 }

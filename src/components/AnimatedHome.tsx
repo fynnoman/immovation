@@ -9,7 +9,7 @@ import CountUp from "@/components/CountUp";
 import {
   MapPin, Shield, Key, Clock, Home, Maximize, DoorOpen,
   Search, FileText, Handshake, Star, Building2, Users,
-  TrendingUp, Award, ChevronRight,
+  TrendingUp, Award, ArrowUpRight, Sparkles, Wrench, CalendarRange,
 } from "lucide-react";
 import type { Property } from "@/data/hotels";
 
@@ -20,243 +20,444 @@ interface AnimatedHomeProps {
 
 export default function AnimatedHome({ featuredProperties, popularCities }: AnimatedHomeProps) {
   return (
-    <div>
-      {/* Hero section */}
-      <section className="bg-[#B5A189] pb-24 pt-10 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4">
-          <AnimateOnScroll animation="fade-up" duration={800} threshold={0}>
-            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-2">
-              Ihre neue Wohnung wartet auf Sie
+    <div className="overflow-hidden">
+      {/* ---------- HERO ---------- */}
+      <section className="relative bg-warm-gradient pt-20 pb-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <AnimateOnScroll animation="fade-up" duration={700} threshold={0}>
+            <span className="eyebrow">
+              <Sparkles size={12} />
+              Wohnen, neu gedacht
+            </span>
+          </AnimateOnScroll>
+
+          <AnimateOnScroll animation="fade-up" delay={150} duration={800} threshold={0}>
+            <h1
+              className="font-display mt-7 text-[44px] md:text-[68px] lg:text-[84px] leading-[0.98] max-w-4xl"
+              style={{ color: "var(--color-text)" }}
+            >
+              Ihre neue Adresse.
+              <br />
+              <span style={{ color: "var(--color-accent)" }}>Mit System.</span>
             </h1>
           </AnimateOnScroll>
-          <AnimateOnScroll animation="fade-up" delay={200} duration={800} threshold={0}>
-            <p className="text-lg text-gray-800/80 mb-8">
-              Festmiete, Monteurswohnungen und Kurzmiete – alles an einem Ort
+
+          <AnimateOnScroll animation="fade-up" delay={300} duration={800} threshold={0}>
+            <p
+              className="mt-7 text-lg md:text-xl max-w-2xl leading-relaxed"
+              style={{ color: "var(--color-text-secondary)" }}
+            >
+              Festmiete, Monteurswohnungen und Kurzmiete – kuratiert, geprüft
+              und elegant präsentiert. Eine Plattform für jede Wohnform.
             </p>
+          </AnimateOnScroll>
+
+          <AnimateOnScroll animation="fade-up" delay={450} duration={700} threshold={0}>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <Link href="/search" className="btn-primary animate-pulse-glow">
+                Wohnungen entdecken
+                <ArrowUpRight size={16} />
+              </Link>
+              <Link href="/vermieter" className="btn-secondary">
+                Wohnung inserieren
+              </Link>
+              <div className="flex items-center gap-3 ml-2 text-xs" style={{ color: "var(--color-text-muted)" }}>
+                <span>Geprüfte Vermieter</span>
+                <span className="opacity-50">·</span>
+                <span>Server in Deutschland</span>
+              </div>
+            </div>
           </AnimateOnScroll>
         </div>
       </section>
 
-      {/* Search bar (overlapping hero) */}
-      <section className="max-w-7xl mx-auto px-4 -mt-12 relative z-10 mb-12">
-        <AnimateOnScroll animation="scale-up" delay={400} duration={700} threshold={0}>
+      {/* ---------- SEARCH BAR (overlapping) ---------- */}
+      <section className="max-w-7xl mx-auto px-6 -mt-16 relative z-20 mb-24">
+        <AnimateOnScroll animation="scale-up" delay={200} duration={700} threshold={0}>
           <SearchBar variant="hero" />
         </AnimateOnScroll>
       </section>
 
-      {/* Rental categories */}
-      <section className="max-w-7xl mx-auto px-4 mb-16">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">
-          Mietarten entdecken
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* ---------- DREI HEBEL ---------- */}
+      <section className="max-w-7xl mx-auto px-6 mb-28">
+        <AnimateOnScroll animation="fade-up">
+          <span className="eyebrow">
+            <span style={{ color: "var(--color-accent)" }}>—</span> Mietarten
+          </span>
+          <h2
+            className="font-display mt-5 text-3xl md:text-5xl max-w-3xl leading-[1.05]"
+            style={{ color: "var(--color-text)" }}
+          >
+            Drei Wege, ein Zuhause zu finden.
+          </h2>
+        </AnimateOnScroll>
+
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-5">
           {[
             {
-              title: "Festmiete",
-              desc: "Langfristige Mietwohnungen mit unbefristetem oder langfristigem Vertrag. Ideal für alle, die dauerhaft ein Zuhause suchen.",
+              eyebrow: "FESTMIETE",
+              icon: Home,
+              title: "Langfristig wohnen.",
+              desc: "Unbefristete und langfristige Mietwohnungen für alle, die ankommen wollen.",
               href: "/search?type=festmiete",
-              icon: "🏠",
-              gradient: "from-blue-500 to-blue-600",
-              bg: "bg-blue-50",
-              iconBg: "bg-blue-100",
-              iconText: "text-blue-600",
+              metric: "Ø 14 Tage",
+              metricLabel: "bis zum Einzug",
             },
             {
-              title: "Monteurswohnungen",
-              desc: "Voll möblierte Wohnungen für Handwerker und Projektteams. Sofort bezugsfertig, inklusive Reinigung und Bettwäsche.",
+              eyebrow: "MONTEURE",
+              icon: Wrench,
+              title: "Voll möbliert. Sofort bezugsfertig.",
+              desc: "Apartments für Handwerker und Projektteams – inklusive Reinigung und Wäsche.",
               href: "/search?type=monteurswohnung",
-              icon: "🔧",
-              gradient: "from-amber-500 to-amber-600",
-              bg: "bg-amber-50",
-              iconBg: "bg-amber-100",
-              iconText: "text-amber-600",
+              metric: "−68%",
+              metricLabel: "manueller Aufwand",
             },
             {
-              title: "Kurzmiete",
-              desc: "Befristete Mietverträge ab 1 Monat. Perfekt für Berufspendler, Studenten oder Übergangslösungen.",
+              eyebrow: "KURZMIETE",
+              icon: CalendarRange,
+              title: "Flexibel ab einem Monat.",
+              desc: "Befristete Mietverträge für Pendler, Studenten oder Übergangslösungen.",
               href: "/search?type=kurzmiete",
-              icon: "⏱️",
-              gradient: "from-purple-500 to-purple-600",
-              bg: "bg-purple-50",
-              iconBg: "bg-purple-100",
-              iconText: "text-purple-600",
+              metric: "1 +",
+              metricLabel: "Monat Mindestlaufzeit",
             },
-          ].map((cat) => (
-            <Link
-              key={cat.title}
-              href={cat.href}
-              className={`group relative rounded-xl border border-gray-200 ${cat.bg} p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-transparent overflow-hidden`}
-            >
-              <div className={`absolute top-0 left-0 w-1 h-full bg-gradient-to-b ${cat.gradient} rounded-l-xl transition-all duration-300 group-hover:w-1.5`} />
-              <div className={`w-12 h-12 ${cat.iconBg} rounded-xl flex items-center justify-center mb-4 text-2xl transition-transform duration-300 group-hover:scale-110`}>
-                {cat.icon}
-              </div>
-              <h3 className="font-bold text-gray-900 text-lg mb-2">
-                {cat.title}
-              </h3>
-              <p className="text-sm text-gray-600 leading-relaxed">{cat.desc}</p>
-              <span className={`inline-flex items-center gap-1 mt-4 text-sm font-medium ${cat.iconText} transition-all duration-300 group-hover:gap-2`}>
-                Entdecken <ChevronRight size={14} />
-              </span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Popular cities */}
-      <section className="max-w-7xl mx-auto px-4 mb-16">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">
-          Beliebte Städte
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {popularCities.map((dest) => (
-            <Link
-              key={dest.city}
-              href={`/search?destination=${encodeURIComponent(dest.city)}`}
-              className="group bg-white border border-gray-200 rounded-xl p-5 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-[#B5A189]"
-            >
-              <div className="w-10 h-10 bg-[#B5A189]/10 rounded-lg flex items-center justify-center mb-3 transition-all duration-300 group-hover:bg-[#B5A189] group-hover:scale-110">
-                <MapPin size={18} className="text-[#B5A189] transition-colors duration-300 group-hover:text-white" />
-              </div>
-              <h3 className="font-bold text-gray-900 text-sm">
-                {dest.city}
-              </h3>
-              <p className="text-xs text-gray-500 mt-0.5">
-                {dest.properties} Wohnungen
-              </p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Featured properties */}
-      <section className="max-w-7xl mx-auto px-4 mb-16">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
-          Top-Wohnungen
-        </h2>
-        <p className="text-gray-500 mb-6">
-          Von Mietern am besten bewertet
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {featuredProperties.map((property) => (
-            <Link
-              key={property.id}
-              href={`/hotel/${property.id}`}
-              className="group bg-white border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-            >
-              <div className="h-44 relative overflow-hidden">
-                {property.images.length > 0 ? (
-                  <Image
-                    src={property.images[0]}
-                    alt={property.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
-                ) : (
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                    <Home size={28} className="text-gray-400" />
+          ].map((cat, i) => (
+            <AnimateOnScroll key={cat.eyebrow} animation="fade-up" delay={i * 120}>
+              <Link
+                href={cat.href}
+                className="group relative block rounded-3xl border p-7 h-full bg-white/70 hover-lift backdrop-blur"
+                style={{ borderColor: "var(--color-border-warm)" }}
+              >
+                <div className="flex items-start justify-between mb-8">
+                  <div
+                    className="text-[11px] font-semibold uppercase tracking-eyebrow"
+                    style={{ color: "var(--color-accent-deep)" }}
+                  >
+                    {cat.eyebrow}
                   </div>
-                )}
-                <div className="absolute top-3 left-3 bg-[#B5A189] text-gray-900 text-xs font-bold px-2 py-1 rounded-lg">
-                  {property.rating}
+                  <div
+                    className="w-10 h-10 rounded-full flex items-center justify-center transition group-hover:rotate-12"
+                    style={{
+                      background: "var(--color-accent-soft)",
+                      color: "var(--color-accent-deep)",
+                    }}
+                  >
+                    <cat.icon size={18} />
+                  </div>
                 </div>
-              </div>
-              <div className="p-4">
-                <h3 className="font-bold text-gray-900 mb-1 text-sm line-clamp-1">
-                  {property.name}
+
+                <h3
+                  className="font-display text-2xl leading-tight mb-3"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  {cat.title}
                 </h3>
-                <p className="text-xs text-gray-500 mb-3 flex items-center gap-1">
-                  <MapPin size={12} /> {property.city}
+                <p className="text-sm leading-relaxed mb-7" style={{ color: "var(--color-text-secondary)" }}>
+                  {cat.desc}
                 </p>
-                <div className="flex items-center gap-3 text-xs text-gray-500 mb-3">
-                  <span className="flex items-center gap-1">
-                    <DoorOpen size={12} /> {property.rooms} Zi.
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Maximize size={12} /> {property.size} m²
-                  </span>
-                </div>
-                <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-                  <span className="text-xs text-gray-500">
-                    {property.reviewScore}
-                  </span>
-                  <div className="text-right">
-                    <p className="font-bold text-gray-900">
-                      €{property.pricePerMonth.toLocaleString("de-DE")}
-                    </p>
-                    <p className="text-xs text-gray-500">/ Monat</p>
+
+                <div
+                  className="pt-5 border-t flex items-end justify-between"
+                  style={{ borderColor: "var(--color-border)" }}
+                >
+                  <div>
+                    <div
+                      className="font-display text-3xl"
+                      style={{ color: "var(--color-accent)" }}
+                    >
+                      {cat.metric}
+                    </div>
+                    <div className="text-xs mt-1" style={{ color: "var(--color-text-muted)" }}>
+                      {cat.metricLabel}
+                    </div>
                   </div>
+                  <ArrowUpRight
+                    size={20}
+                    className="transition group-hover:rotate-45"
+                    style={{ color: "var(--color-accent)" }}
+                  />
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </AnimateOnScroll>
           ))}
         </div>
       </section>
 
-      {/* How it works */}
-      <section className="max-w-7xl mx-auto px-4 py-16 overflow-hidden">
-        <AnimateOnScroll animation="fade-up">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2 text-center">
-            So funktioniert&apos;s
-          </h2>
-          <p className="text-gray-500 text-center mb-12 max-w-xl mx-auto">
-            In nur drei Schritten zu Ihrer neuen Wohnung
-          </p>
-        </AnimateOnScroll>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <StaggerChildren animation="fade-up" staggerDelay={200}>
-            {[
-              {
-                step: "1",
-                icon: Search,
-                title: "Wohnung suchen",
-                desc: "Nutzen Sie unsere Filter, um die perfekte Wohnung in Ihrer Wunschstadt zu finden. Festmiete, Kurzmiete oder Monteurswohnung – alles an einem Ort.",
-              },
-              {
-                step: "2",
-                icon: FileText,
-                title: "Anfrage stellen",
-                desc: "Gefällt Ihnen eine Wohnung? Senden Sie direkt eine unverbindliche Mietanfrage an den Vermieter. Kostenlos und ohne Verpflichtung.",
-              },
-              {
-                step: "3",
-                icon: Handshake,
-                title: "Einziehen",
-                desc: "Der Vermieter meldet sich bei Ihnen. Vereinbaren Sie einen Besichtigungstermin und unterschreiben Sie den Mietvertrag. Fertig!",
-              },
-            ].map((item) => (
-              <div key={item.step} className="relative text-center group">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-[#B5A189] rounded-2xl mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                  <item.icon size={28} className="text-gray-900" />
-                </div>
-                <div className="absolute -top-2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-7 h-7 bg-gray-900 text-white rounded-full flex items-center justify-center text-xs font-bold">
-                  {item.step}
-                </div>
-                <h3 className="font-bold text-gray-900 text-lg mb-2">{item.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+      {/* ---------- BELIEBTE STÄDTE ---------- */}
+      <section
+        className="py-24 border-y"
+        style={{
+          borderColor: "var(--color-border)",
+          background: "var(--color-cream)",
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-6">
+          <AnimateOnScroll animation="fade-up">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+              <div>
+                <span className="eyebrow">
+                  <span style={{ color: "var(--color-accent)" }}>—</span> Standorte
+                </span>
+                <h2
+                  className="font-display mt-5 text-3xl md:text-5xl max-w-2xl leading-[1.05]"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  Beliebte Städte.
+                </h2>
               </div>
+              <Link
+                href="/search"
+                className="text-sm font-medium inline-flex items-center gap-1.5 hover:gap-2.5 transition-all"
+                style={{ color: "var(--color-accent-deep)" }}
+              >
+                Alle Standorte
+                <ArrowUpRight size={14} />
+              </Link>
+            </div>
+          </AnimateOnScroll>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+            {popularCities.map((dest, i) => (
+              <AnimateOnScroll key={dest.city} animation="fade-up" delay={i * 60}>
+                <Link
+                  href={`/search?destination=${encodeURIComponent(dest.city)}`}
+                  className="group block rounded-2xl border bg-white p-5 hover-lift"
+                  style={{ borderColor: "var(--color-border-warm)" }}
+                >
+                  <MapPin
+                    size={16}
+                    className="mb-4 transition group-hover:scale-110"
+                    style={{ color: "var(--color-accent)" }}
+                  />
+                  <h3 className="font-semibold text-base" style={{ color: "var(--color-text)" }}>
+                    {dest.city}
+                  </h3>
+                  <p className="text-xs mt-1" style={{ color: "var(--color-text-muted)" }}>
+                    {dest.properties} Wohnungen
+                  </p>
+                </Link>
+              </AnimateOnScroll>
             ))}
-          </StaggerChildren>
+          </div>
         </div>
       </section>
 
-      {/* Stats with CountUp */}
-      <section className="bg-gray-900 py-16 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {/* ---------- TOP WOHNUNGEN ---------- */}
+      <section className="max-w-7xl mx-auto px-6 py-28">
+        <AnimateOnScroll animation="fade-up">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+            <div>
+              <span className="eyebrow">
+                <span style={{ color: "var(--color-accent)" }}>—</span> Empfehlungen
+              </span>
+              <h2
+                className="font-display mt-5 text-3xl md:text-5xl max-w-2xl leading-[1.05]"
+                style={{ color: "var(--color-text)" }}
+              >
+                Kuratierte Wohnungen.
+              </h2>
+              <p className="mt-4 text-base max-w-xl" style={{ color: "var(--color-text-secondary)" }}>
+                Von unserer Redaktion und Mietern am höchsten bewertet.
+              </p>
+            </div>
+            <Link
+              href="/search"
+              className="text-sm font-medium inline-flex items-center gap-1.5 hover:gap-2.5 transition-all"
+              style={{ color: "var(--color-accent-deep)" }}
+            >
+              Alle ansehen
+              <ArrowUpRight size={14} />
+            </Link>
+          </div>
+        </AnimateOnScroll>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {featuredProperties.map((property, i) => (
+            <AnimateOnScroll key={property.id} animation="fade-up" delay={i * 100}>
+              <Link
+                href={`/hotel/${property.id}`}
+                className="group block rounded-2xl overflow-hidden border bg-white hover-lift h-full"
+                style={{ borderColor: "var(--color-border-warm)" }}
+              >
+                <div className="aspect-[4/3] relative overflow-hidden">
+                  {property.images.length > 0 ? (
+                    <Image
+                      src={property.images[0]}
+                      alt={property.name}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+                  ) : (
+                    <div
+                      className="absolute inset-0 flex items-center justify-center"
+                      style={{ background: "var(--color-cream)" }}
+                    >
+                      <Home size={28} style={{ color: "var(--color-accent-soft)" }} />
+                    </div>
+                  )}
+                  <div
+                    className="absolute top-4 left-4 px-2.5 py-1 rounded-full text-[11px] font-semibold backdrop-blur"
+                    style={{
+                      background: "rgba(255,255,255,0.92)",
+                      color: "var(--color-accent-deep)",
+                    }}
+                  >
+                    {property.rating} ★
+                  </div>
+                </div>
+                <div className="p-5">
+                  <h3
+                    className="font-semibold text-[15px] mb-1.5 line-clamp-1"
+                    style={{ color: "var(--color-text)" }}
+                  >
+                    {property.name}
+                  </h3>
+                  <p
+                    className="text-xs mb-4 flex items-center gap-1"
+                    style={{ color: "var(--color-text-muted)" }}
+                  >
+                    <MapPin size={11} /> {property.city}
+                  </p>
+                  <div
+                    className="flex items-center gap-3 text-xs mb-4"
+                    style={{ color: "var(--color-text-secondary)" }}
+                  >
+                    <span className="flex items-center gap-1">
+                      <DoorOpen size={12} /> {property.rooms} Zi.
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Maximize size={12} /> {property.size} m²
+                    </span>
+                  </div>
+                  <div
+                    className="pt-4 border-t flex items-end justify-between"
+                    style={{ borderColor: "var(--color-border)" }}
+                  >
+                    <div className="text-xs" style={{ color: "var(--color-text-muted)" }}>
+                      {property.reviewScore}
+                    </div>
+                    <div className="text-right">
+                      <p className="font-display text-lg" style={{ color: "var(--color-text)" }}>
+                        €{property.pricePerMonth.toLocaleString("de-DE")}
+                      </p>
+                      <p className="text-[10px]" style={{ color: "var(--color-text-muted)" }}>
+                        pro Monat
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </AnimateOnScroll>
+          ))}
+        </div>
+      </section>
+
+      {/* ---------- SO FUNKTIONIERTS ---------- */}
+      <section
+        className="py-28 border-y"
+        style={{
+          borderColor: "var(--color-border)",
+          background: "var(--color-background-deep)",
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-6">
+          <AnimateOnScroll animation="fade-up">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <span className="eyebrow">
+                <span style={{ color: "var(--color-accent)" }}>—</span> Prozess
+              </span>
+              <h2
+                className="font-display mt-5 text-3xl md:text-5xl leading-[1.05]"
+                style={{ color: "var(--color-text)" }}
+              >
+                In drei Schritten zum Einzug.
+              </h2>
+              <p className="mt-4 text-base" style={{ color: "var(--color-text-secondary)" }}>
+                Klar strukturiert. Ohne Umwege. Mit echtem Service.
+              </p>
+            </div>
+          </AnimateOnScroll>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <StaggerChildren animation="fade-up" staggerDelay={150}>
+              {[
+                {
+                  step: "01",
+                  icon: Search,
+                  title: "Wohnung finden",
+                  desc: "Filter Sie nach Stadt, Mietart und Größe – wir zeigen Ihnen kuratierte Treffer.",
+                },
+                {
+                  step: "02",
+                  icon: FileText,
+                  title: "Anfrage stellen",
+                  desc: "Senden Sie eine unverbindliche Mietanfrage direkt an den verifizierten Vermieter.",
+                },
+                {
+                  step: "03",
+                  icon: Handshake,
+                  title: "Einziehen",
+                  desc: "Termin vereinbaren, Vertrag unterschreiben und im neuen Zuhause ankommen.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.step}
+                  className="group relative rounded-3xl border p-8 bg-white hover-lift"
+                  style={{ borderColor: "var(--color-border-warm)" }}
+                >
+                  <div
+                    className="font-display text-7xl absolute top-6 right-7 opacity-10 select-none"
+                    style={{ color: "var(--color-accent)" }}
+                  >
+                    {item.step}
+                  </div>
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center mb-6 transition group-hover:scale-110"
+                    style={{
+                      background: "var(--color-accent)",
+                      color: "#fff",
+                    }}
+                  >
+                    <item.icon size={20} />
+                  </div>
+                  <h3
+                    className="font-display text-2xl mb-3 leading-tight"
+                    style={{ color: "var(--color-text)" }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </StaggerChildren>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- STATS ---------- */}
+      <section className="max-w-7xl mx-auto px-6 py-28">
+        <AnimateOnScroll animation="fade-up">
+          <div
+            className="rounded-3xl p-12 md:p-16 border relative overflow-hidden"
+            style={{
+              background:
+                "linear-gradient(135deg, var(--color-accent-deep) 0%, var(--color-accent) 60%, var(--color-accent-bright) 100%)",
+              borderColor: "transparent",
+            }}
+          >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-10 relative z-10">
               {[
                 { icon: Building2, value: 12500, suffix: "+", label: "Wohnungen" },
                 { icon: Users, value: 8200, suffix: "+", label: "Zufriedene Mieter" },
                 { icon: TrendingUp, value: 98, suffix: "%", label: "Vermittlungsquote" },
-                { icon: Award, value: 4.8, suffix: " / 5", label: "Durchschnittsbewertung", decimals: 1, separator: "," },
+                { icon: Award, value: 4.8, suffix: " / 5", label: "Bewertung", decimals: 1, separator: "," },
               ].map((stat) => (
-                <div key={stat.label} className="text-center group">
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-[#B5A189]/20 rounded-xl mb-3 group-hover:scale-110 group-hover:bg-[#B5A189]/30 transition-all duration-300">
-                    <stat.icon size={24} className="text-[#B5A189]" />
-                  </div>
-                  <p className="text-3xl font-bold text-white mb-1">
+                <div key={stat.label}>
+                  <stat.icon size={20} className="text-white/70 mb-4" />
+                  <p className="font-display text-4xl md:text-5xl text-white mb-2 leading-none">
                     <CountUp
                       end={stat.value}
                       suffix={stat.suffix}
@@ -265,118 +466,157 @@ export default function AnimatedHome({ featuredProperties, popularCities }: Anim
                       separator={stat.separator || "."}
                     />
                   </p>
-                  <p className="text-sm text-gray-400">{stat.label}</p>
+                  <p className="text-sm text-white/75">{stat.label}</p>
                 </div>
               ))}
-            </StaggerChildren>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* USP section */}
-      <section className="bg-gray-50 py-16 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4">
-          <AnimateOnScroll animation="fade-up">
-            <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-              Warum Pavan-rent?
-            </h2>
-          </AnimateOnScroll>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <StaggerChildren animation="scale-up" staggerDelay={120}>
-              {[
-                {
-                  icon: Shield,
-                  title: "Geprüfte Vermieter",
-                  desc: "Alle Vermieter werden von uns verifiziert. Sicherheit für Mieter und Vermieter.",
-                },
-                {
-                  icon: Key,
-                  title: "Schnelle Vermittlung",
-                  desc: "Von der Anfrage bis zum Einzug – wir machen den Prozess so einfach wie möglich.",
-                },
-                {
-                  icon: Home,
-                  title: "Vielfältige Auswahl",
-                  desc: "Festmiete, Kurzmiete oder Monteurswohnung – für jeden Bedarf die passende Lösung.",
-                },
-                {
-                  icon: Clock,
-                  title: "Persönlicher Support",
-                  desc: "Unser Team unterstützt Sie bei allen Fragen rund um Ihre Mietwohnung.",
-                },
-              ].map((usp) => (
-                <div key={usp.title} className="text-center group cursor-default">
-                  <div className="inline-flex items-center justify-center w-14 h-14 bg-[#B5A189]/10 rounded-full mb-4 group-hover:bg-[#B5A189]/20 group-hover:scale-110 transition-all duration-300">
-                    <usp.icon size={28} className="text-[#B5A189]" />
-                  </div>
-                  <h3 className="font-bold text-gray-900 mb-2">{usp.title}</h3>
-                  <p className="text-sm text-gray-500">{usp.desc}</p>
-                </div>
-              ))}
-            </StaggerChildren>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="max-w-7xl mx-auto px-4 py-16 overflow-hidden">
-        <AnimateOnScroll animation="fade-up">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2 text-center">
-            Das sagen unsere Mieter
-          </h2>
-          <p className="text-gray-500 text-center mb-10">
-            Echte Erfahrungen von zufriedenen Nutzern
-          </p>
         </AnimateOnScroll>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <StaggerChildren animation="fade-up" staggerDelay={150}>
+      </section>
+
+      {/* ---------- WARUM ---------- */}
+      <section
+        className="py-28 border-y"
+        style={{
+          borderColor: "var(--color-border)",
+          background: "var(--color-cream)",
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-6">
+          <AnimateOnScroll animation="fade-up">
+            <div className="max-w-2xl mb-16">
+              <span className="eyebrow">
+                <span style={{ color: "var(--color-accent)" }}>—</span> Warum Immovation
+              </span>
+              <h2
+                className="font-display mt-5 text-3xl md:text-5xl leading-[1.05]"
+                style={{ color: "var(--color-text)" }}
+              >
+                Vertrauen, das man spürt.
+              </h2>
+            </div>
+          </AnimateOnScroll>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <StaggerChildren animation="fade-up" staggerDelay={100}>
+              {[
+                { icon: Shield, title: "Geprüfte Vermieter", desc: "Jeder Vermieter wird von uns verifiziert. Sicherheit für beide Seiten." },
+                { icon: Key, title: "Schnelle Vermittlung", desc: "Von der Anfrage bis zum Einzug – ohne Umwege und Wartezeiten." },
+                { icon: Home, title: "Kuratierte Auswahl", desc: "Festmiete, Kurzmiete, Monteurswohnung – für jeden Bedarf passend." },
+                { icon: Clock, title: "Persönlicher Support", desc: "Unser Team begleitet Sie bei jedem Schritt – von Anfang bis Schlüsselübergabe." },
+              ].map((usp) => (
+                <div
+                  key={usp.title}
+                  className="group rounded-2xl border bg-white p-7 hover-lift h-full"
+                  style={{ borderColor: "var(--color-border-warm)" }}
+                >
+                  <div
+                    className="w-11 h-11 rounded-full flex items-center justify-center mb-6 transition group-hover:scale-110"
+                    style={{
+                      background: "var(--color-accent-soft)",
+                      color: "var(--color-accent-deep)",
+                    }}
+                  >
+                    <usp.icon size={18} />
+                  </div>
+                  <h3 className="font-semibold text-lg mb-2" style={{ color: "var(--color-text)" }}>
+                    {usp.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
+                    {usp.desc}
+                  </p>
+                </div>
+              ))}
+            </StaggerChildren>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- TESTIMONIALS ---------- */}
+      <section className="max-w-7xl mx-auto px-6 py-28">
+        <AnimateOnScroll animation="fade-up">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="eyebrow">
+              <span style={{ color: "var(--color-accent)" }}>—</span> Stimmen
+            </span>
+            <h2
+              className="font-display mt-5 text-3xl md:text-5xl leading-[1.05]"
+              style={{ color: "var(--color-text)" }}
+            >
+              Was Mieter wirklich sagen.
+            </h2>
+          </div>
+        </AnimateOnScroll>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <StaggerChildren animation="fade-up" staggerDelay={120}>
             {[
               {
                 name: "Laura Schneider",
                 city: "Berlin",
                 type: "Festmiete",
-                text: "Innerhalb von einer Woche hatte ich drei Besichtigungstermine und kurz darauf meinen Mietvertrag. Pavan-rent hat den Umzug nach Berlin so viel einfacher gemacht!",
+                text: "Innerhalb einer Woche hatte ich drei Besichtigungstermine und kurz darauf meinen Mietvertrag. Der Umzug nach Berlin war noch nie so einfach.",
                 rating: 5,
               },
               {
                 name: "Markus Weber",
                 city: "München",
                 type: "Monteurswohnung",
-                text: "Als Projektleiter brauche ich regelmäßig möblierte Wohnungen in verschiedenen Städten. Pavan-rent spart mir jedes Mal Stunden an Suchzeit. Top Service!",
+                text: "Als Projektleiter brauche ich regelmäßig möblierte Wohnungen in verschiedenen Städten. Immovation spart mir jedes Mal Stunden an Suchzeit.",
                 rating: 5,
               },
               {
                 name: "Julia Koch",
                 city: "Hamburg",
                 type: "Kurzmiete",
-                text: "Die Kurzmiete war perfekt für mein Auslandssemester-Vorpraktikum. Geprüfte Vermieter geben einem ein sicheres Gefühl. Kann ich nur weiterempfehlen.",
+                text: "Die Kurzmiete war perfekt für mein Vorpraktikum. Geprüfte Vermieter geben einem ein wirklich sicheres Gefühl.",
                 rating: 4,
               },
             ].map((t) => (
               <div
                 key={t.name}
-                className="bg-white border border-gray-200 rounded-xl p-6 hover-lift transition group"
+                className="group rounded-2xl border bg-white p-7 hover-lift h-full flex flex-col"
+                style={{ borderColor: "var(--color-border-warm)" }}
               >
-                <div className="flex gap-1 mb-4">
+                <div className="flex gap-0.5 mb-5">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star
                       key={i}
-                      size={16}
-                      className={`transition-transform duration-300 ${i < t.rating ? "text-[#B5A189] fill-[#B5A189]" : "text-gray-200"}`}
-                      style={{ transitionDelay: `${i * 50}ms` }}
+                      size={14}
+                      className={i < t.rating ? "" : "opacity-25"}
+                      style={{
+                        color: "var(--color-accent)",
+                        fill: i < t.rating ? "var(--color-accent)" : "transparent",
+                      }}
                     />
                   ))}
                 </div>
-                <p className="text-sm text-gray-600 leading-relaxed mb-4 italic">
-                  &ldquo;{t.text}&rdquo;
+                <p
+                  className="text-base leading-relaxed mb-6 flex-1"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  „{t.text}"
                 </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-[#B5A189]/10 rounded-full flex items-center justify-center font-bold text-[#B5A189] text-sm group-hover:bg-[#B5A189] group-hover:text-gray-900 transition-colors duration-300">
+                <div
+                  className="flex items-center gap-3 pt-5 border-t"
+                  style={{ borderColor: "var(--color-border)" }}
+                >
+                  <div
+                    className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold"
+                    style={{
+                      background: "var(--color-accent-soft)",
+                      color: "var(--color-accent-deep)",
+                    }}
+                  >
                     {t.name.split(" ").map((n) => n[0]).join("")}
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-gray-900">{t.name}</p>
-                    <p className="text-xs text-gray-500">{t.type} in {t.city}</p>
+                    <p className="text-sm font-semibold" style={{ color: "var(--color-text)" }}>
+                      {t.name}
+                    </p>
+                    <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>
+                      {t.type} in {t.city}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -385,153 +625,186 @@ export default function AnimatedHome({ featuredProperties, popularCities }: Anim
         </div>
       </section>
 
-      {/* Vermieter CTA */}
-      <section className="bg-gray-50 py-16 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4">
+      {/* ---------- VERMIETER CTA ---------- */}
+      <section
+        className="py-28 border-t"
+        style={{
+          borderColor: "var(--color-border)",
+          background: "var(--color-background-deep)",
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-6">
           <AnimateOnScroll animation="fade-up">
-            <div className="flex flex-col md:flex-row items-center gap-10 bg-white border border-gray-200 rounded-2xl p-8 md:p-12">
-              <div className="flex-1">
-                <span className="inline-block text-xs font-semibold text-[#B5A189] bg-[#B5A189]/10 px-3 py-1 rounded-full mb-4">
-                  Für Vermieter
+            <div
+              className="rounded-3xl border bg-white overflow-hidden grid md:grid-cols-2"
+              style={{ borderColor: "var(--color-border-warm)" }}
+            >
+              <div className="p-10 md:p-14">
+                <span className="eyebrow">
+                  <span style={{ color: "var(--color-accent)" }}>—</span> Für Vermieter
                 </span>
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                <h2
+                  className="font-display mt-5 text-3xl md:text-4xl leading-[1.1] mb-5"
+                  style={{ color: "var(--color-text)" }}
+                >
                   Sie haben eine Wohnung zu vermieten?
                 </h2>
-                <p className="text-gray-500 mb-6 leading-relaxed">
-                  Erreichen Sie tausende verifizierte Mietinteressenten. Inserieren Sie Ihre Wohnung kostenlos und finden Sie den perfekten Mieter – schnell, sicher und unkompliziert.
+                <p
+                  className="text-base leading-relaxed mb-8 max-w-md"
+                  style={{ color: "var(--color-text-secondary)" }}
+                >
+                  Erreichen Sie tausende verifizierte Mietinteressenten. Inserieren
+                  Sie Ihre Wohnung kostenlos – schnell, sicher und unkompliziert.
                 </p>
-                <div className="flex flex-wrap gap-4">
-                  <Link
-                    href="/search"
-                    className="bg-[#B5A189] hover:bg-[#9B8B73] text-gray-900 px-6 py-3 rounded-md font-semibold text-sm transition animate-pulse-glow btn-ripple active:scale-95"
-                  >
-                    Jetzt kostenlos inserieren
+                <div className="flex flex-wrap gap-3">
+                  <Link href="/vermieter" className="btn-primary">
+                    Kostenlos inserieren
+                    <ArrowUpRight size={16} />
                   </Link>
-                  <Link
-                    href="#"
-                    className="border border-gray-300 text-gray-700 px-6 py-3 rounded-md font-semibold text-sm hover:bg-gray-50 transition active:scale-95"
-                  >
+                  <Link href="/vermieter" className="btn-secondary">
                     Mehr erfahren
                   </Link>
                 </div>
               </div>
-              <div className="w-full md:w-72 shrink-0">
-                <div className="bg-[#B5A189]/5 border border-[#B5A189]/20 rounded-xl p-6 space-y-4">
-                  {[
-                    { label: "Aktive Inserate", value: "12.500+" },
-                    { label: "Ø Vermittlungsdauer", value: "14 Tage" },
-                    { label: "Erfolgsrate", value: "98%" },
-                  ].map((item) => (
-                    <div key={item.label} className="flex justify-between items-center">
-                      <span className="text-sm text-gray-600">{item.label}</span>
-                      <span className="text-sm font-bold text-gray-900">{item.value}</span>
-                    </div>
-                  ))}
-                </div>
+              <div
+                className="p-10 md:p-14 flex flex-col justify-center gap-5"
+                style={{ background: "var(--color-cream)" }}
+              >
+                {[
+                  { label: "Aktive Inserate", value: "12.500+" },
+                  { label: "Ø Vermittlungsdauer", value: "14 Tage" },
+                  { label: "Erfolgsrate", value: "98%" },
+                  { label: "Servicegebühr", value: "0 €" },
+                ].map((item, i, arr) => (
+                  <div
+                    key={item.label}
+                    className={`flex items-baseline justify-between ${
+                      i < arr.length - 1 ? "pb-5 border-b" : ""
+                    }`}
+                    style={{ borderColor: "var(--color-border)" }}
+                  >
+                    <span className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
+                      {item.label}
+                    </span>
+                    <span
+                      className="font-display text-2xl"
+                      style={{ color: "var(--color-text)" }}
+                    >
+                      {item.value}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           </AnimateOnScroll>
         </div>
       </section>
 
-      {/* Unternehmensvision */}
-      <section className="py-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4">
-          <AnimateOnScroll animation="fade-up">
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <span className="inline-block text-xs font-semibold text-[#B5A189] bg-[#B5A189]/10 px-3 py-1 rounded-full mb-4">
-                Unsere Vision
-              </span>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                Ein zweites Zuhause für Monteure
-              </h2>
-              <p className="text-gray-500 leading-relaxed">
-                Die Vision von Pavan-rent ist eng mit der persönlichen Geschichte unseres Gründers verbunden.
+      {/* ---------- VISION ---------- */}
+      <section className="max-w-7xl mx-auto px-6 py-28">
+        <AnimateOnScroll animation="fade-up">
+          <div className="max-w-3xl mx-auto text-center mb-14">
+            <span className="eyebrow">
+              <span style={{ color: "var(--color-accent)" }}>—</span> Unsere Vision
+            </span>
+            <h2
+              className="font-display mt-5 text-3xl md:text-5xl leading-[1.05] mb-5"
+              style={{ color: "var(--color-text)" }}
+            >
+              Ein zweites Zuhause für Monteure.
+            </h2>
+            <p className="text-base leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
+              Die Vision von Immovation ist eng mit der persönlichen Geschichte
+              unseres Gründers verbunden.
+            </p>
+          </div>
+        </AnimateOnScroll>
+
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <AnimateOnScroll animation="fade-right">
+            <div
+              className="rounded-2xl border bg-white p-8 h-full"
+              style={{ borderColor: "var(--color-border-warm)" }}
+            >
+              <p className="text-base leading-relaxed mb-5" style={{ color: "var(--color-text)" }}>
+                Unser Geschäftsführer, Steepan Saravanapavan, war während seiner
+                Schulzeit selbst auf Montage. Dort hat er Erfahrungen gemacht, die
+                er nun in sein eigenes Unternehmen einfließen lässt.
+              </p>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
+                Steepan weiß, welch harte Arbeit Monteure*innen täglich leisten,
+                und ist überzeugt, dass diesen Menschen großartige Apartments zu
+                fairem Preis zustehen.
               </p>
             </div>
           </AnimateOnScroll>
 
-          <div className="grid md:grid-cols-2 gap-10 items-start">
-            <AnimateOnScroll animation="fade-right">
-              <div className="space-y-6">
-                <p className="text-gray-600 leading-relaxed">
-                  Unser Geschäftsführer, Steepan Saravanapavan, war während seiner Schulzeit selbst auf Montage.
-                  Dort hat er Erfahrungen gemacht, die er nun in sein eigenes Unternehmen einfließen lässt.
-                  Er hat kein Verständnis dafür, wie Monteure*innen oft untergebracht werden –
-                  der Zustand vieler Wohnungen entspricht nicht dem, was hart arbeitende Menschen verdienen.
-                </p>
-                <p className="text-gray-600 leading-relaxed">
-                  Steepan weiß, welch harte Arbeit Monteure*innen täglich leisten, und ist der festen Überzeugung,
-                  dass diesen Menschen großartige Apartments zu moderatem Preis zustehen.
-                </p>
-              </div>
-            </AnimateOnScroll>
-
-            <AnimateOnScroll animation="fade-left">
-              <div className="space-y-6">
-                <blockquote className="bg-[#B5A189]/5 border-l-4 border-[#B5A189] rounded-r-xl p-6">
-                  <p className="text-gray-700 italic leading-relaxed">
-                    &bdquo;Oftmals verlassen Monteure*innen ihre Familien, um in Deutschland zeitweise zu arbeiten.
-                    Ich möchte diesen Menschen, die jeden Tag ihr Bestes geben, ein zweites Zuhause bieten.
-                    Ein Zuhause, in dem sie sich wohlfühlen und nach der Arbeit auch mal abschalten können.&ldquo;
-                  </p>
-                  <footer className="mt-3 text-sm font-semibold text-[#B5A189]">— Steepan Saravanapavan</footer>
-                </blockquote>
-
-                <blockquote className="bg-gray-50 border-l-4 border-gray-300 rounded-r-xl p-6">
-                  <p className="text-gray-700 italic leading-relaxed">
-                    &bdquo;Wir glauben, dass ausgeglichene Mitarbeiter auch produktivere sind.
-                    Tun Sie Ihren Mitarbeitern etwas Gutes. Wir freuen uns, die richtige Wohnung für Sie zu finden
-                    und beraten Sie gerne.&ldquo;
-                  </p>
-                  <footer className="mt-3 text-sm font-semibold text-gray-500">— Steepan Saravanapavan</footer>
-                </blockquote>
-              </div>
-            </AnimateOnScroll>
-          </div>
-
-          <AnimateOnScroll animation="fade-up" delay={200}>
-            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { icon: <Home size={24} />, label: "Kernsanierte Wohnungen" },
-                { icon: <Key size={24} />, label: "Voll eingerichtet" },
-                { icon: <Shield size={24} />, label: "Putzservice inklusive" },
-                { icon: <Star size={24} />, label: "Wohlfühlplatz garantiert" },
-              ].map((item) => (
-                <div key={item.label} className="flex flex-col items-center text-center gap-2 bg-white border border-gray-200 rounded-xl p-5 hover:border-[#B5A189]/40 hover:shadow-md transition">
-                  <div className="text-[#B5A189]">{item.icon}</div>
-                  <span className="text-sm font-medium text-gray-700">{item.label}</span>
-                </div>
-              ))}
-            </div>
+          <AnimateOnScroll animation="fade-left">
+            <blockquote
+              className="rounded-2xl p-8 h-full border-l-4 flex flex-col justify-center"
+              style={{
+                borderColor: "var(--color-accent)",
+                background: "var(--color-cream)",
+              }}
+            >
+              <p
+                className="font-display text-xl md:text-2xl leading-snug mb-5"
+                style={{ color: "var(--color-text)" }}
+              >
+                „Ich möchte Menschen, die jeden Tag ihr Bestes geben, ein zweites
+                Zuhause bieten. Ein Zuhause, in dem sie sich wohlfühlen."
+              </p>
+              <footer
+                className="text-xs font-semibold uppercase tracking-eyebrow"
+                style={{ color: "var(--color-accent-deep)" }}
+              >
+                Steepan Saravanapavan · Gründer
+              </footer>
+            </blockquote>
           </AnimateOnScroll>
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* ---------- FAQ ---------- */}
       <AnimateOnScroll animation="fade-up">
         <FAQSection />
       </AnimateOnScroll>
 
-      {/* Newsletter */}
-      <section className="max-w-7xl mx-auto px-4 py-16 overflow-hidden">
+      {/* ---------- FINAL CTA ---------- */}
+      <section className="max-w-7xl mx-auto px-6 py-28">
         <AnimateOnScroll animation="scale-up">
-          <div className="bg-[#B5A189] rounded-xl p-8 md:p-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-              Neue Wohnungen direkt in Ihr Postfach
+          <div
+            className="rounded-3xl p-12 md:p-20 text-center relative overflow-hidden"
+            style={{
+              background:
+                "radial-gradient(80% 100% at 50% 0%, var(--color-accent-soft) 0%, var(--color-cream) 60%, var(--color-background-deep) 100%)",
+            }}
+          >
+            <span className="eyebrow">
+              <Sparkles size={12} />
+              Bereit für Ihr neues Zuhause?
+            </span>
+            <h2
+              className="font-display mt-6 text-4xl md:text-6xl max-w-3xl mx-auto leading-[1.02] mb-6"
+              style={{ color: "var(--color-text)" }}
+            >
+              Finden Sie Ihre Wohnung. Heute.
             </h2>
-            <p className="text-gray-800/80 mb-6">
-              Abonnieren Sie unseren Newsletter und verpassen Sie keine neuen Angebote.
+            <p
+              className="text-base md:text-lg max-w-xl mx-auto mb-10"
+              style={{ color: "var(--color-text-secondary)" }}
+            >
+              Tausende Wohnungen, geprüfte Vermieter, persönlicher Support – an
+              einem Ort.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
-              <input
-                type="email"
-                placeholder="Ihre E-Mail-Adresse"
-                className="flex-1 px-4 py-3 rounded-md text-sm outline-none focus:ring-2 focus:ring-gray-900/20 transition-shadow"
-              />
-              <button className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-3 rounded-md font-semibold text-sm transition active:scale-95">
-                Abonnieren
-              </button>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link href="/search" className="btn-primary">
+                Wohnungen entdecken
+                <ArrowUpRight size={16} />
+              </Link>
+              <Link href="/vermieter" className="btn-secondary">
+                Vermieten
+              </Link>
             </div>
           </div>
         </AnimateOnScroll>

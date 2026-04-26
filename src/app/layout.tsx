@@ -1,35 +1,20 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FavoritesProvider from "@/components/FavoritesProvider";
 
-const michroma = localFont({
-  src: "../../public/Michroma-Regular.ttf",
-  variable: "--font-michroma",
-  display: "swap",
-});
-
-const rubik = localFont({
-  src: [
-    {
-      path: "../../public/Rubik-VariableFont_wght.ttf",
-      style: "normal",
-    },
-    {
-      path: "../../public/Rubik-Italic-VariableFont_wght.ttf",
-      style: "italic",
-    },
-  ],
-  variable: "--font-rubik",
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Pavan-rent – Finden Sie Ihre perfekte Wohnung",
+  title: "Immovation – Wohnen, neu gedacht.",
   description:
-    "Finden Sie Festmieten, Monteurswohnungen und Kurzmieten in ganz Deutschland. Geprüfte Vermieter, schnelle Vermittlung.",
+    "Festmiete, Monteurswohnungen und Kurzmiete – kuratiert, geprüft und elegant präsentiert. Ihre neue Adresse, mit System.",
 };
 
 export default function RootLayout({
@@ -38,11 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="de"
-      className={`${michroma.variable} ${rubik.variable} h-full antialiased`}
-    >
-      <body className={`${rubik.className} min-h-full flex flex-col bg-white`}>
+    <html lang="de" className={`${inter.variable} h-full antialiased`}>
+      <body
+        className={`${inter.className} min-h-full flex flex-col`}
+        style={{ background: "var(--color-background)", color: "var(--color-text)" }}
+      >
         <FavoritesProvider>
           <Header />
           <main className="flex-1">{children}</main>
